@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://dmmqk7uk3snk0"]
 
-[ext_resource type="Script" uid="uid://dcw0vqj8bbaox" path="res://logic/core/main_game.gd" id="1_wuhvf"]
-[ext_resource type="Script" uid="uid://doqd7glu45k1" path="res://logic/core/debug_text_overlay.gd" id="2_ntnbn"]
+[ext_resource type="Script" uid="uid://dcw0vqj8bbaox" path="res://logic/core/main_game.gd" id="1_tiinh"]
+[ext_resource type="Script" uid="uid://doqd7glu45k1" path="res://logic/core/debug_text_overlay.gd" id="2_l7wwh"]
 
 [node name="MainGame" type="Node2D" unique_id=1625920989]
 process_mode = 3
-script = ExtResource("1_wuhvf")
+script = ExtResource("1_tiinh")
 
 [node name="Systems" type="Node" parent="." unique_id=686190430]
 
@@ -21,6 +21,7 @@ process_mode = 1
 [node name="HudLayer" type="CanvasLayer" parent="." unique_id=948380995]
 process_mode = 1
 layer = 10
+visible = false
 
 [node name="HudRoot" type="Control" parent="HudLayer" unique_id=588132230]
 layout_mode = 3
@@ -47,6 +48,7 @@ mouse_filter = 2
 [node name="TransitionLayer" type="CanvasLayer" parent="." unique_id=255178519]
 process_mode = 3
 layer = 100
+visible = false
 
 [node name="TransitionRoot" type="Control" parent="TransitionLayer" unique_id=132459100]
 layout_mode = 3
@@ -72,7 +74,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
 mouse_behavior_recursive = 1
-script = ExtResource("2_ntnbn")
+script = ExtResource("2_l7wwh")
 
 [node name="MarginContainer" type="MarginContainer" parent="DebugLayer/DebugRoot/DebugTextOverlay" unique_id=342256166]
 layout_mode = 0

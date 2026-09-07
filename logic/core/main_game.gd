@@ -30,6 +30,9 @@ func _input(event: InputEvent) -> void:
 		return
 	if event.is_action_pressed(&"debug_quit"):
 		quit_game()
+		
+func _ready() -> void:
+	load_level(MAIN_MENU)
 #endregion
 
 #region Private Methods:
@@ -44,6 +47,7 @@ func _perform_load_level(level_scene_uid : String) -> void:
 	if is_instance_valid(_current_level):
 		_current_level.queue_free()
 		_current_level = null
+		
 		# Wait to allow the queued deletion to process so it is out of the scene tree
 		await get_tree().process_frame
 	
@@ -53,23 +57,47 @@ func _perform_load_level(level_scene_uid : String) -> void:
 	
 	if new_level_packed == null:
 		push_error("Could not load level as a packed scene: " + level_scene_uid)
-		return
+		_perform_load_fall_back()
 		
 	var new_level : Node = new_level_packed.instantiate()
 	
 	if not new_level:
 		push_error("Could not instantiate new level " + level_scene_uid)
-		return
+		_perform_load_fall_back()
 		
 	if new_level is not BaseLevel:
 		new_level.free()  # Level must be freed to avoid unreferenced orphan nodes
 		push_error("Loaded level is not of type BaseLevel " + level_scene_uid)
-		return
-		
-	# TODO (main menu): Should have a fall back scene
+		_perform_load_fall_back()
 	
 	_current_level = new_level as BaseLevel
 	
 	level_root.add_child(_current_level)
 	
+func _perform_load_fall_back() -> void:
+	var level_scene_uid : String = MAIN_MENU
+	
+	var new_level_packed : PackedScene = (
+			ResourceLoader.load(level_scene_uid, "PackedScene") as PackedScene
+	)
+	
+	if new_level_packed == null:
+		push_error("Could not load level as a packed scene: " + level_scene_uid)
+		return
+	
+	var new_level : Node = new_level_packed.instantiate()
+	
+	if not new_level:
+		push_error("Could not instantiate new level " + level_scene_uid)
+		return
+	
+	if new_level is not BaseLevel:
+		new_level.free()  # Level must be freed to avoid unreferenced orphan nodes
+		push_error("Loaded level is not of type BaseLevel " + level_scene_uid)
+		return
+	
+	_current_level = new_level as BaseLevel
+	
+	level_root.add_child(_current_level)
+
 #endregion

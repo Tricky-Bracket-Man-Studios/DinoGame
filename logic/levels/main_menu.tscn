@@ -1,3 +1,12 @@
 [gd_scene format=3 uid="uid://cs3wjisow5ssf"]
 
+[ext_resource type="Script" uid="uid://degg1dkutyxq5" path="res://logic/core/main_menu.gd" id="1_v1pau"]
+
 [node name="Main Menu" type="Node2D" unique_id=1195711499]
+script = ExtResource("1_v1pau")
+
+[node name="MenuRoot" type="Control" parent="." unique_id=1238121279]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
