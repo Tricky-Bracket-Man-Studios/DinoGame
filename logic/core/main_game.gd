@@ -1,10 +1,9 @@
-class_name MainGame
 extends Node2D
 
-## Filename: main_game.gd
 ## Description: The purpose of this script is to orcastrate the game from a high level.
+## Filename: main_game.gd
 ## Author(s): Matthew Perry,
-## Last Updated: 09/06/2026
+## Last Updated: 09/07/2026
 
 #region Variables:
 const MAIN_MENU   : String = "uid://cs3wjisow5ssf"
@@ -33,6 +32,7 @@ func _input(event: InputEvent) -> void:
 		
 func _ready() -> void:
 	load_level(MAIN_MENU)
+	ManagerBus.connect("start_button_pressed", load_level)
 #endregion
 
 #region Private Methods:

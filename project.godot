@@ -16,6 +16,11 @@ run/main_scene="uid://dmmqk7uk3snk0"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="uid://c4u71t86iv2yc"
 
+[autoload]
+
+ManagerBus="*uid://tk844fhksf1r"
+DebugScript="uid://conhoy267rvxv"
+
 [display]
 
 window/size/viewport_width=640
