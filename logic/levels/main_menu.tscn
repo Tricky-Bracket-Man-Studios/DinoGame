@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cs3wjisow5ssf"]
 
-[ext_resource type="Script" uid="uid://degg1dkutyxq5" path="res://logic/core/main_menu.gd" id="1_v1pau"]
+[ext_resource type="Script" uid="uid://degg1dkutyxq5" path="res://logic/levels/main_menu.gd" id="1_v1pau"]
 
 [node name="Main Menu" type="Node2D" unique_id=1195711499 node_paths=PackedStringArray("_start_button", "_options_button", "_quit_button")]
 script = ExtResource("1_v1pau")
