@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://d0xl27pl6mfr2"]
 
-[ext_resource type="Script" uid="uid://d4c528k1pwiwv" path="res://logic/levels/battle_menu.gd" id="1_ipn0u"]
+[ext_resource type="Script" uid="uid://d4c528k1pwiwv" path="res://logic/levels/_scripts/battle_menu.gd" id="1_38myl"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_kpjrq"]
 font_size = 80
 
 [node name="Battle" type="Node2D" unique_id=1324921985]
-script = ExtResource("1_ipn0u")
+script = ExtResource("1_38myl")
 
 [node name="Control" type="Control" parent="." unique_id=847456650]
 layout_mode = 3
