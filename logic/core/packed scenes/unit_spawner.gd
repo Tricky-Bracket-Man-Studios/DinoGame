@@ -6,3 +6,7 @@ extends Node2D
 ## Filename: unit_spawner.gd
 ## Author(s): Matthew Perry,
 ## Last Updated: 09/09/2026
+
+#region export variables (snake_case):
+@export var unit_to_spawn : PackedScene
+#endregion
