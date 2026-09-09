@@ -23,18 +23,6 @@ process_mode = 1
 [node name="HudLayer" type="CanvasLayer" parent="." unique_id=948380995]
 process_mode = 1
 layer = 10
-visible = false
-
-[node name="HudRoot" type="Control" parent="HudLayer" unique_id=588132230]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="CenterContainer" type="CenterContainer" parent="HudLayer/HudRoot" unique_id=1432967581]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
 
 [node name="PauseLayer" type="CanvasLayer" parent="." unique_id=856411223]
 process_mode = 2
@@ -50,7 +38,6 @@ mouse_filter = 2
 [node name="TransitionLayer" type="CanvasLayer" parent="." unique_id=255178519]
 process_mode = 3
 layer = 100
-visible = false
 
 [node name="TransitionRoot" type="Control" parent="TransitionLayer" unique_id=132459100]
 layout_mode = 3

@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://14y8rn7rk4vy"]
+
+[ext_resource type="Texture2D" uid="uid://cbskf3sb2em0v" path="res://assets/debug/debug_trike.png" id="1_hhskf"]
+
+[node name="PlayerDebugUnit" type="Node2D" unique_id=687503608]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=173853174]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_hhskf")
