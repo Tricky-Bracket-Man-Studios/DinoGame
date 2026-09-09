@@ -2,23 +2,88 @@
 
 [ext_resource type="Script" uid="uid://d4c528k1pwiwv" path="res://logic/levels/_scripts/battle_menu.gd" id="1_38myl"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_kpjrq"]
-font_size = 80
-
 [node name="Battle" type="Node2D" unique_id=1324921985]
 script = ExtResource("1_38myl")
 
-[node name="Control" type="Control" parent="." unique_id=847456650]
+[node name="BattleUIRoot" type="Control" parent="." unique_id=1286873900]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 638.0
+offset_bottom = 361.0
 
-[node name="Label" type="Label" parent="Control" unique_id=1568967439]
+[node name="AttackPhase" type="HBoxContainer" parent="BattleUIRoot" unique_id=1897882048]
 layout_mode = 0
-offset_left = 14.0
-offset_top = 110.0
-offset_right = 723.0
-offset_bottom = 247.0
-text = "BATTLE MENU!"
-label_settings = SubResource("LabelSettings_kpjrq")
+offset_left = 145.0
+offset_top = 262.0
+offset_right = 640.0
+offset_bottom = 358.0
+alignment = 1
+
+[node name="Attack" type="Button" parent="BattleUIRoot/AttackPhase" unique_id=325483656]
+layout_mode = 2
+text = "Attack"
+
+[node name="SpecialAttack" type="Button" parent="BattleUIRoot/AttackPhase" unique_id=359924373]
+layout_mode = 2
+text = "Spe. Att."
+
+[node name="Ultimate" type="Button" parent="BattleUIRoot/AttackPhase" unique_id=1404864192]
+layout_mode = 2
+text = "Ultimate"
+
+[node name="Flee" type="Button" parent="BattleUIRoot/AttackPhase" unique_id=1281070830]
+layout_mode = 2
+text = "Flee
+"
+
+[node name="DefendPhase" type="HBoxContainer" parent="BattleUIRoot" unique_id=107839457]
+visible = false
+layout_mode = 0
+offset_left = 145.0
+offset_top = 262.0
+offset_right = 640.0
+offset_bottom = 358.0
+alignment = 1
+
+[node name="Defend" type="Button" parent="BattleUIRoot/DefendPhase" unique_id=1798948668]
+layout_mode = 2
+text = "Defend
+"
+
+[node name="SpecialDefend" type="Button" parent="BattleUIRoot/DefendPhase" unique_id=1131106203]
+layout_mode = 2
+text = "Spe. Def."
+
+[node name="Ultimate" type="Button" parent="BattleUIRoot/DefendPhase" unique_id=1371627683]
+layout_mode = 2
+text = "Ultimate"
+
+[node name="Flee" type="Button" parent="BattleUIRoot/DefendPhase" unique_id=62657414]
+layout_mode = 2
+text = "Flee
+"
+
+[node name="AspectRatioContainer2" type="AspectRatioContainer" parent="BattleUIRoot" unique_id=143731884]
+layout_mode = 0
+offset_left = 266.0
+offset_top = 9.0
+offset_right = 376.0
+offset_bottom = 119.0
+
+[node name="Label" type="Label" parent="BattleUIRoot/AspectRatioContainer2" unique_id=1859998328]
+layout_mode = 2
+text = "V. Raptor lvl 5
+"
+horizontal_alignment = 1
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="BattleUIRoot" unique_id=165727634]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 251.0
+offset_right = 176.0
+offset_bottom = 361.0
+
+[node name="Label" type="Label" parent="BattleUIRoot/AspectRatioContainer" unique_id=1050680704]
+layout_mode = 2
+text = "Steg lvl 6"
+horizontal_alignment = 1
