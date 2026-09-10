@@ -6,13 +6,13 @@ extends Node
 ## and what how to handle each state.
 ## Filename: battle_state.gd
 ## Author(s): Matthew Perry,
-## Last Updated: 09/09/2026
+## Last Updated: 09/10/2026
 
 #region signals (snake_case):
-signal change_battle_state(battle_state : BattleState)
+signal change_battle_state(current_battle_state : BattleState, new_battle_state_name : String)
 #endregion
 
-#region private methods (undersocre prefixed snake_case):
-@abstract func _enter() -> void
-@abstract func _exit() -> void
+#region public methods (non underscore prefixed snake_case):
+@abstract func enter() -> void
+@abstract func exit() -> void
 #endregion
