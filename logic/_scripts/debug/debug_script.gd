@@ -7,7 +7,7 @@ extends Node
 ## Last Updated: 09/11/2026
 
 #region export variables (snake_case):
-@export var health_system : HealthSystem
+@export var health_system : IHealthSystem
 #endregion
 
 #region (optional) build in virtural methods:
@@ -26,8 +26,7 @@ func _input(event: InputEvent) -> void:
 	if not OS.is_debug_build():
 		return
 		
-	if health_system == null:
-		push_error(name + ": HealthSystem is null, make sure to assign it!")
+	if not is_instance_valid(health_system):
 		return
 		
 	if event.is_action_pressed(&"damage unit"):

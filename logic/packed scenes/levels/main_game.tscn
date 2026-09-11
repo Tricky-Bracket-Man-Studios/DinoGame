@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://dmmqk7uk3snk0"]
 
-[ext_resource type="Script" uid="uid://dcw0vqj8bbaox" path="res://logic/core/_scripts/main_game.gd" id="1_tsk3t"]
-[ext_resource type="Script" uid="uid://conhoy267rvxv" path="res://logic/autoloads/debug_script.gd" id="2_prci6"]
-[ext_resource type="PackedScene" uid="uid://baqfqynd0wchc" path="res://logic/core/packed scenes/health_system.tscn" id="2_rwomd"]
-[ext_resource type="Script" uid="uid://doqd7glu45k1" path="res://logic/core/_scripts/debug_text_overlay.gd" id="2_tsk3t"]
+[ext_resource type="Script" uid="uid://dcw0vqj8bbaox" path="res://logic/_scripts/main_game.gd" id="1_tsk3t"]
+[ext_resource type="Script" uid="uid://conhoy267rvxv" path="res://logic/_scripts/debug/debug_script.gd" id="2_prci6"]
+[ext_resource type="PackedScene" uid="uid://baqfqynd0wchc" path="res://logic/packed scenes/health_system.tscn" id="2_rwomd"]
+[ext_resource type="Script" uid="uid://doqd7glu45k1" path="res://logic/_scripts/debug/debug_text_overlay.gd" id="2_tsk3t"]
 
 [node name="MainGame" type="Node2D" unique_id=1625920989]
 process_mode = 3

@@ -1,11 +1,16 @@
 @abstract
-class_name HealthSystem
+class_name IHealthSystem
 extends Node2D
 
 ## Description: The purpose of this script is to clarify what to expect from all Health Systems. 
-## Filename: health_system.gd
+## Filename: health_system_interface.gd
 ## Author(s): Matthew Perry,
 ## Last Updated: 09/07/2026
+
+#region signals (snake_case):
+signal unit_died(damage_amount : float)
+signal health_updated(current_health : float)
+#endregion
 
 #region public methods (non underscore prefixed snake_case):
 

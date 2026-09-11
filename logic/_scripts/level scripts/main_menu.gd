@@ -1,4 +1,4 @@
-extends BaseLevel
+extends ILevel
 
 ## Description: The purpose of this script is to hold the logic for the main menu.
 ## Filename: main_menu.gd

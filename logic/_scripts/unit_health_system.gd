@@ -1,15 +1,10 @@
-extends HealthSystem
+extends IHealthSystem
 
 ## Description: The purpose of this script is to hold the logic for A units Health System. all things 
 ## related to damage and health points should be handled by this script.
 ## Filename: unit_health_system.gd
 ## Author(s): Matthew Perry,
 ## Last Updated: 09/11/2026
-
-#region signals (snake_case):
-signal unit_died(damage_amount : float)
-signal health_updated(current_health : float)
-#endregion
 
 #region export variables (snake_case):
 @export var max_health_points : float = 100

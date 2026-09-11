@@ -1,22 +1,22 @@
 [gd_scene format=3 uid="uid://d0xl27pl6mfr2"]
 
-[ext_resource type="Script" uid="uid://d4c528k1pwiwv" path="res://logic/levels/_scripts/battle_menu.gd" id="1_38myl"]
-[ext_resource type="PackedScene" uid="uid://b8owwx7xkxeri" path="res://logic/core/packed scenes/unit_spawner.tscn" id="2_cdhw7"]
-[ext_resource type="PackedScene" uid="uid://bbdxcsm5r2x3m" path="res://logic/core/packed scenes/debug_enemy_unit.tscn" id="3_ei06y"]
-[ext_resource type="PackedScene" uid="uid://14y8rn7rk4vy" path="res://logic/core/packed scenes/debug_player_unit.tscn" id="3_favcw"]
+[ext_resource type="Script" uid="uid://d4c528k1pwiwv" path="res://logic/_scripts/level scripts/battle_menu.gd" id="1_0uxjn"]
+[ext_resource type="PackedScene" uid="uid://b8owwx7xkxeri" path="res://logic/packed scenes/unit_spawner.tscn" id="2_uvkk6"]
+[ext_resource type="PackedScene" uid="uid://bbdxcsm5r2x3m" path="res://logic/packed scenes/debug/debug_enemy_unit.tscn" id="3_s1s75"]
+[ext_resource type="PackedScene" uid="uid://14y8rn7rk4vy" path="res://logic/packed scenes/debug/debug_player_unit.tscn" id="4_otfe7"]
 
 [node name="Battle" type="Node2D" unique_id=1324921985]
-script = ExtResource("1_38myl")
+script = ExtResource("1_0uxjn")
 
 [node name="World" type="Node2D" parent="." unique_id=235485507]
 
-[node name="EnemyUnitSpawner" parent="World" unique_id=1664450174 instance=ExtResource("2_cdhw7")]
+[node name="EnemyUnitSpawner" parent="World" unique_id=1664450174 instance=ExtResource("2_uvkk6")]
 position = Vector2(321, 93)
-unit_to_spawn = ExtResource("3_ei06y")
+unit_to_spawn = ExtResource("3_s1s75")
 
-[node name="PlayerUnitSpawner" parent="World" unique_id=783542150 instance=ExtResource("2_cdhw7")]
+[node name="PlayerUnitSpawner" parent="World" unique_id=783542150 instance=ExtResource("2_uvkk6")]
 position = Vector2(188, 226)
-unit_to_spawn = ExtResource("3_favcw")
+unit_to_spawn = ExtResource("4_otfe7")
 
 [node name="BattleUIRoot" type="Control" parent="." unique_id=790413789]
 layout_mode = 3

@@ -1,15 +1,16 @@
 extends Node2D
 
-## Description: The purpose of this script is to orcastrate the game from a high level.
+## Description: The purpose of this script is to orcastrate the game from a 
+## high level.
 ## Filename: main_game.gd
 ## Author(s): Matthew Perry,
-## Last Updated: 09/07/2026
+## Last Updated: 09/11/2026
 
 #region Variables:
 const MAIN_MENU   : String = "uid://cs3wjisow5ssf"
 const BATTLE_MENU : String = "uid://d0xl27pl6mfr2"
 
-var _current_level : BaseLevel = null
+var _current_level : ILevel = null
 
 # Game World Root Nodes:
 @onready var level_root  : Node2D = $World/LevelRoot
@@ -65,12 +66,12 @@ func _perform_load_level(level_scene_uid : String) -> void:
 		push_error("Could not instantiate new level " + level_scene_uid)
 		_perform_load_fall_back()
 		
-	if new_level is not BaseLevel:
+	if new_level is not ILevel:
 		new_level.free()  # Level must be freed to avoid unreferenced orphan nodes
 		push_error("Loaded level is not of type BaseLevel " + level_scene_uid)
 		_perform_load_fall_back()
 	
-	_current_level = new_level as BaseLevel
+	_current_level = new_level as ILevel
 	
 	level_root.add_child(_current_level)
 	
@@ -91,12 +92,12 @@ func _perform_load_fall_back() -> void:
 		push_error("Could not instantiate new level " + level_scene_uid)
 		return
 	
-	if new_level is not BaseLevel:
+	if new_level is not ILevel:
 		new_level.free()  # Level must be freed to avoid unreferenced orphan nodes
 		push_error("Loaded level is not of type BaseLevel " + level_scene_uid)
 		return
 	
-	_current_level = new_level as BaseLevel
+	_current_level = new_level as ILevel
 	
 	level_root.add_child(_current_level)
 
