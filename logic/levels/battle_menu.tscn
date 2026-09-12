@@ -1,3 +1,24 @@
 [gd_scene format=3 uid="uid://d0xl27pl6mfr2"]
 
+[ext_resource type="Script" uid="uid://d4c528k1pwiwv" path="res://logic/levels/battle_menu.gd" id="1_ipn0u"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_kpjrq"]
+font_size = 80
+
 [node name="Battle" type="Node2D" unique_id=1324921985]
+script = ExtResource("1_ipn0u")
+
+[node name="Control" type="Control" parent="." unique_id=847456650]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Control" unique_id=1568967439]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 110.0
+offset_right = 723.0
+offset_bottom = 247.0
+text = "BATTLE MENU!"
+label_settings = SubResource("LabelSettings_kpjrq")

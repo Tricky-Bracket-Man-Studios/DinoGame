@@ -3,10 +3,10 @@
 class_name PascalCase
 extends Node
 
+## Description: The purpose of this script is to...
 ## Filename: main_game.gd
-## Description: The purpose of this script is to orcastrate the game from a high level.
 ## Author(s): Matthew Perry,
-## Last Updated: 09/06/2026
+## Last Updated: XX/XX/20XX
 
 #region signals (snake_case):
 signal something_happend(value : int)
