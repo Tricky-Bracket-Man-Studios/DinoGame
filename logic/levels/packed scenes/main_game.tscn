@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://dmmqk7uk3snk0"]
 
-[ext_resource type="Script" uid="uid://dcw0vqj8bbaox" path="res://logic/core/main_game.gd" id="1_tiinh"]
-[ext_resource type="Script" uid="uid://doqd7glu45k1" path="res://logic/core/debug_text_overlay.gd" id="2_l7wwh"]
+[ext_resource type="Script" uid="uid://dcw0vqj8bbaox" path="res://logic/core/_scripts/main_game.gd" id="1_tsk3t"]
+[ext_resource type="Script" uid="uid://conhoy267rvxv" path="res://logic/autoloads/debug_script.gd" id="2_prci6"]
+[ext_resource type="PackedScene" uid="uid://baqfqynd0wchc" path="res://logic/core/packed scenes/health_system.tscn" id="2_rwomd"]
+[ext_resource type="Script" uid="uid://doqd7glu45k1" path="res://logic/core/_scripts/debug_text_overlay.gd" id="2_tsk3t"]
 
 [node name="MainGame" type="Node2D" unique_id=1625920989]
 process_mode = 3
-script = ExtResource("1_tiinh")
+script = ExtResource("1_tsk3t")
 
 [node name="Systems" type="Node" parent="." unique_id=686190430]
 
@@ -61,12 +63,16 @@ mouse_filter = 2
 process_mode = 3
 layer = 128
 
-[node name="DebugRoot" type="Control" parent="DebugLayer" unique_id=1317186499]
+[node name="DebugRoot" type="Control" parent="DebugLayer" unique_id=1317186499 node_paths=PackedStringArray("health_system")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
+script = ExtResource("2_prci6")
+health_system = NodePath("Health System")
+
+[node name="Health System" parent="DebugLayer/DebugRoot" unique_id=761511741 instance=ExtResource("2_rwomd")]
 
 [node name="DebugTextOverlay" type="Control" parent="DebugLayer/DebugRoot" unique_id=1637726363]
 anchors_preset = 0
@@ -74,7 +80,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
 mouse_behavior_recursive = 1
-script = ExtResource("2_l7wwh")
+script = ExtResource("2_tsk3t")
 
 [node name="MarginContainer" type="MarginContainer" parent="DebugLayer/DebugRoot/DebugTextOverlay" unique_id=342256166]
 layout_mode = 0

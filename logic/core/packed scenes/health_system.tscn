@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://baqfqynd0wchc"]
+
+[ext_resource type="Script" uid="uid://0jbdxdu5xks6" path="res://logic/core/_scripts/unit_health_system.gd" id="1_jq4me"]
+
+[node name="Health System" type="Node2D" unique_id=761511741]
+script = ExtResource("1_jq4me")
