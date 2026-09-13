@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://b8owwx7xkxeri"]
-
-[ext_resource type="Script" uid="uid://bbpmxg7yiq76u" path="res://logic/_scripts/unit_spawner.gd" id="1_vgirh"]
-
-[node name="Unit Spawner" type="Node2D" unique_id=1664450174]
-script = ExtResource("1_vgirh")

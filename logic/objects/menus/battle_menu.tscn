@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://bhpmunnatpoaf"]
+
+[ext_resource type="Script" uid="uid://d4c528k1pwiwv" path="res://logic/_local scripts/battle_menu.gd" id="1_0uxjn"]
+
+[node name="BattleMenu" type="Control" unique_id=818550227]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0uxjn")
+
+[node name="AttackPhase" type="HBoxContainer" parent="." unique_id=730349946]
+visible = false
+layout_mode = 0
+offset_left = 347.0
+offset_top = 265.0
+offset_right = 606.0
+offset_bottom = 329.0
+alignment = 1
+
+[node name="Attack" type="Button" parent="AttackPhase" unique_id=2038595331]
+layout_mode = 2
+text = "Attack"
+
+[node name="SpecialAttack" type="Button" parent="AttackPhase" unique_id=1633930144]
+layout_mode = 2
+text = "Spe. Att."
+
+[node name="Ultimate" type="Button" parent="AttackPhase" unique_id=2113427523]
+layout_mode = 2
+text = "Ultimate"
+
+[node name="Flee" type="Button" parent="AttackPhase" unique_id=342631722]
+layout_mode = 2
+text = "Flee
+"
+
+[node name="DefendPhase" type="HBoxContainer" parent="." unique_id=277157681]
+layout_mode = 0
+offset_left = 240.0
+offset_top = 237.0
+offset_right = 735.0
+offset_bottom = 333.0
+alignment = 1
+
+[node name="Defend" type="Button" parent="DefendPhase" unique_id=880804169]
+layout_mode = 2
+text = "Defend
+"
+
+[node name="SpecialDefend" type="Button" parent="DefendPhase" unique_id=560573299]
+layout_mode = 2
+text = "Spe. Def."
+
+[node name="Ultimate" type="Button" parent="DefendPhase" unique_id=1541299287]
+layout_mode = 2
+text = "Ultimate"
+
+[node name="Flee" type="Button" parent="DefendPhase" unique_id=438969151]
+layout_mode = 2
+text = "Flee
+"
+
+[node name="AspectRatioContainer2" type="AspectRatioContainer" parent="." unique_id=1213218847]
+layout_mode = 0
+offset_left = 266.0
+offset_top = 9.0
+offset_right = 376.0
+offset_bottom = 119.0
+
+[node name="Label" type="Label" parent="AspectRatioContainer2" unique_id=1772812468]
+layout_mode = 2
+text = "V. Raptor lvl 5
+"
+horizontal_alignment = 1
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="." unique_id=1312561777]
+layout_mode = 0
+offset_top = 175.0
+offset_right = 177.0
+offset_bottom = 285.0
+
+[node name="Label" type="Label" parent="AspectRatioContainer" unique_id=632194656]
+layout_mode = 2
+text = "Steg lvl 6"
+horizontal_alignment = 1

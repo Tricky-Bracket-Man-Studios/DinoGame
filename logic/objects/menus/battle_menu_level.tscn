@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://0usuedl4d18t"]
+
+[ext_resource type="PackedScene" uid="uid://b8owwx7xkxeri" path="res://logic/objects/unit_spawner.tscn" id="1_r4a61"]
+[ext_resource type="PackedScene" uid="uid://bbdxcsm5r2x3m" path="res://logic/objects/debug/debug_enemy_unit.tscn" id="2_qdv5p"]
+[ext_resource type="PackedScene" uid="uid://14y8rn7rk4vy" path="res://logic/objects/debug/debug_player_unit.tscn" id="3_6ecpd"]
+
+[node name="BattleMenuLevel" type="Node2D" unique_id=1992736613]
+
+[node name="Spawns" type="Node2D" parent="." unique_id=1963083878]
+
+[node name="EnemyUnitSpawner" parent="Spawns" unique_id=1664450174 instance=ExtResource("1_r4a61")]
+position = Vector2(321, 93)
+unit_to_spawn = ExtResource("2_qdv5p")
+
+[node name="PlayerUnitSpawner" parent="Spawns" unique_id=1151181317 instance=ExtResource("1_r4a61")]
+position = Vector2(188, 226)
+unit_to_spawn = ExtResource("3_6ecpd")
