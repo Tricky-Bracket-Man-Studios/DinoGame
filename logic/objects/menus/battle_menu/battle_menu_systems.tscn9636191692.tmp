@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://dcpnglbr72cr1"]
+
+[ext_resource type="Script" uid="uid://b7qrdxsntamtm" path="res://logic/_local scripts/battle_state_machine.gd" id="1_673q3"]
+[ext_resource type="Script" uid="uid://dmrqxk362maca" path="res://logic/_local scripts/attack_phase.gd" id="2_nhjab"]
+[ext_resource type="Script" uid="uid://dtvixhjpyb8we" path="res://logic/_local scripts/battle_phase.gd" id="3_nhjab"]
+[ext_resource type="Script" uid="uid://ccm253s3g5klg" path="res://logic/_local scripts/defense_phase.gd" id="4_673q3"]
+
+[node name="BattleMenuSystems" type="Node" unique_id=894240351]
+
+[node name="BattleStateMachine" type="Node" parent="." unique_id=1123646674 node_paths=PackedStringArray("default_state")]
+script = ExtResource("1_673q3")
+default_state = NodePath("AttackPhase")
+
+[node name="AttackPhase" type="Node" parent="BattleStateMachine" unique_id=551781133]
+script = ExtResource("2_nhjab")
+
+[node name="BattlePhase" type="Node" parent="BattleStateMachine" unique_id=208299031]
+script = ExtResource("3_nhjab")
+
+[node name="DefensePhase" type="Node" parent="BattleStateMachine" unique_id=633340089]
+script = ExtResource("4_673q3")

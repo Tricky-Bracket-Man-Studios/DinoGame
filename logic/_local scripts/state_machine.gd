@@ -5,7 +5,7 @@ extends Node
 ## transitions.
 ## Filename: state_machine.gd
 ## Author(s): Matthew Perry,
-## Last Updated: 09/12/2026
+## Last Updated: 09/13/2026
 
 #region export variables (snake_case):
 @export var default_state : IState
@@ -31,6 +31,7 @@ func _process(delta: float) -> void:
 		_current_state.process(delta)
 #endregion
 
+#region public methods (non underscore prefixed snake_case):
 func on_state_change(current_state : IState, new_state_name):
 	if current_state != _current_state:
 		return
@@ -44,3 +45,4 @@ func on_state_change(current_state : IState, new_state_name):
 	
 	_current_state = new_state
 	new_state.enter()
+#endregion

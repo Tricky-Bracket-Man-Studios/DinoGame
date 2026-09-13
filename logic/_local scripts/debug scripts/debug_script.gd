@@ -4,11 +4,13 @@ extends Node
 ## systems and UI, quick and dirty.
 ## Filename: debug_script.gd
 ## Author(s): Matthew Perry,
-## Last Updated: 09/12/2026
+## Last Updated: 09/13/2026
 
 #region export variables (snake_case):
-@export var health_system : IHealthSystem
-@export var dino_game : Node
+#endregion
+
+#region private variables (undersocre prefixed snake_case):
+var _players_dino_stance : String = "" 
 #endregion
 
 #region (optional) build in virtural methods:
@@ -16,41 +18,24 @@ func _ready() -> void:
 	if not OS.is_debug_build():
 		return
 	
-	if health_system == null:
-		push_error(name + ": HealthSystem is null, make sure to assign it!")
-		return
-	
-	health_system.health_updated.connect(_health_has_changed)
-	health_system.unit_died.connect(_unit_has_died)
+	ManagerSignalBus.change_players_dino_stance.connect(_change_players_dino_stance)
+	ManagerSignalBus.calculate_battle_request.connect(_calculate_dino_battle)
 	
 func _input(event: InputEvent) -> void:
 	if not OS.is_debug_build():
 		return
 	
-	if is_instance_valid(health_system):
-		if event.is_action_pressed(&"damage unit"):
-			health_system.damage_health_points(10.0)
-	
-		if event.is_action_pressed(&"heal unit"):
-			health_system.heal_health_points(10.0)
-	
-	if is_instance_valid(dino_game):
-		if event.is_action_pressed(&"debug_quit"):
-			dino_game.quit_game()
-	
-	
-	
-	
+	if event.is_action_pressed(&"debug_quit"):
+		get_tree().root.propagate_notification(NOTIFICATION_WM_CLOSE_REQUEST)
+		get_tree().quit()
 #endregion
 
 #region private methods (undersocre prefixed snake_case):
+func _change_players_dino_stance(new_stance : String) -> void:
+	_players_dino_stance = new_stance
+	print(name + ": player's dino stance is now " + _players_dino_stance)
 	
-func _health_has_changed(current_health : float) -> void:
-	print("Debug: health has changed!")
-	print("Debug: health points is now " + str(current_health))
-	
-func _unit_has_died(damage_amount : float) -> void:
-	print("Debug: unit died!")
-	print("Debug: unit took " + str(damage_amount) + " damage!")
-
+func _calculate_dino_battle() -> void:
+	print(name + ": Idk bro roll your own die!")
+	ManagerSignalBus.calculated_battle_request.emit()
 #endregion

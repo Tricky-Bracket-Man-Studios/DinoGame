@@ -4,7 +4,7 @@ extends IState
 ## when on the main menu
 ## Filename: on_main_menu_state.gd
 ## Author(s): Matthew Perry,
-## Last Updated: 09/12/2026
+## Last Updated: 09/13/2026
 
 #region constants (CONSTANT_CASE):
 const MAIN_MENU_HUD : String = "uid://cij05tkirhkac"
@@ -20,12 +20,10 @@ func process(_delta: float) -> void:
 	pass
 
 func exit() -> void:
-	pass
+	ManagerSignalBus.change_game_state_request.disconnect(_start_game)
 #endregion
 
 #region private variables (undersocre prefixed snake_case):
-
 func _start_game() -> void:
 	change_state.emit(self, BATTLE_MENU_STATE)
-
 #endregion

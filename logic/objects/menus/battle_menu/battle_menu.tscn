@@ -1,18 +1,25 @@
 [gd_scene format=3 uid="uid://bhpmunnatpoaf"]
 
-[ext_resource type="Script" uid="uid://d4c528k1pwiwv" path="res://logic/_local scripts/battle_menu.gd" id="1_0uxjn"]
+[ext_resource type="Script" uid="uid://d4c528k1pwiwv" path="res://logic/_local scripts/battle_menu_hud.gd" id="1_nsj0x"]
 
-[node name="BattleMenu" type="Control" unique_id=818550227]
+[node name="BattleMenu" type="Control" unique_id=818550227 node_paths=PackedStringArray("attack_card", "special_attack_card", "ultimate_attack_card", "defense_card", "special_defense_card", "null_defense_card", "attack_phase_hud", "defense_phase_hud")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_0uxjn")
+script = ExtResource("1_nsj0x")
+attack_card = NodePath("AttackPhase/Attack")
+special_attack_card = NodePath("AttackPhase/SpecialAttack")
+ultimate_attack_card = NodePath("AttackPhase/Ultimate")
+defense_card = NodePath("DefendPhase/Defend")
+special_defense_card = NodePath("DefendPhase/SpecialDefend")
+null_defense_card = NodePath("DefendPhase/Null")
+attack_phase_hud = NodePath("AttackPhase")
+defense_phase_hud = NodePath("DefendPhase")
 
 [node name="AttackPhase" type="HBoxContainer" parent="." unique_id=730349946]
-visible = false
 layout_mode = 0
 offset_left = 347.0
 offset_top = 265.0
@@ -32,16 +39,12 @@ text = "Spe. Att."
 layout_mode = 2
 text = "Ultimate"
 
-[node name="Flee" type="Button" parent="AttackPhase" unique_id=342631722]
-layout_mode = 2
-text = "Flee
-"
-
 [node name="DefendPhase" type="HBoxContainer" parent="." unique_id=277157681]
+visible = false
 layout_mode = 0
-offset_left = 240.0
-offset_top = 237.0
-offset_right = 735.0
+offset_left = 304.0
+offset_top = 261.0
+offset_right = 642.0
 offset_bottom = 333.0
 alignment = 1
 
@@ -54,14 +57,9 @@ text = "Defend
 layout_mode = 2
 text = "Spe. Def."
 
-[node name="Ultimate" type="Button" parent="DefendPhase" unique_id=1541299287]
+[node name="Null" type="Button" parent="DefendPhase" unique_id=1541299287]
 layout_mode = 2
-text = "Ultimate"
-
-[node name="Flee" type="Button" parent="DefendPhase" unique_id=438969151]
-layout_mode = 2
-text = "Flee
-"
+text = "Null"
 
 [node name="AspectRatioContainer2" type="AspectRatioContainer" parent="." unique_id=1213218847]
 layout_mode = 0
