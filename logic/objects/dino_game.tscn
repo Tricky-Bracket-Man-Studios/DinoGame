@@ -1,0 +1,126 @@
+[gd_scene format=3 uid="uid://dj0rb3kcv87em"]
+
+[ext_resource type="Script" uid="uid://conhoy267rvxv" path="res://logic/_local scripts/debug scripts/debug_script.gd" id="1_eh18w"]
+[ext_resource type="Script" uid="uid://ckyk045hy0gm7" path="res://logic/_local scripts/first_game_bootup_state.gd" id="2_1txnp"]
+[ext_resource type="Script" uid="uid://bpif1fpdy0ig8" path="res://logic/_local scripts/state_machine.gd" id="2_ukopx"]
+[ext_resource type="Script" uid="uid://71brnghoy683" path="res://logic/_local scripts/on_main_menu_state.gd" id="3_1txnp"]
+[ext_resource type="Script" uid="uid://doqd7glu45k1" path="res://logic/_local scripts/debug scripts/debug_text_overlay.gd" id="3_33aom"]
+[ext_resource type="Script" uid="uid://cngwy60wx0vvb" path="res://logic/_local scripts/on_battle_menu_state.gd" id="4_1txnp"]
+[ext_resource type="Script" uid="uid://bxicaghh46xw8" path="res://logic/_local scripts/menu_manager.gd" id="4_ny1bo"]
+[ext_resource type="Script" uid="uid://v0y8bfd1a3f5" path="res://logic/_local scripts/level_manager.gd" id="6_ny1bo"]
+[ext_resource type="Script" uid="uid://dqmf8upc40foa" path="res://logic/_local scripts/systems_manager.gd" id="7_ny1bo"]
+
+[node name="Dino Game" type="Node" unique_id=666613440]
+
+[node name="Game Managers" type="Node" parent="." unique_id=1596685514]
+
+[node name="GamestateManger" type="Node" parent="Game Managers" unique_id=784459762 node_paths=PackedStringArray("default_state")]
+script = ExtResource("2_ukopx")
+default_state = NodePath("FirstGameBootup")
+
+[node name="FirstGameBootup" type="Node" parent="Game Managers/GamestateManger" unique_id=1559958140]
+script = ExtResource("2_1txnp")
+
+[node name="OnMainMenu" type="Node" parent="Game Managers/GamestateManger" unique_id=138789829]
+script = ExtResource("3_1txnp")
+
+[node name="OnBattleMenu" type="Node" parent="Game Managers/GamestateManger" unique_id=700101193]
+script = ExtResource("4_1txnp")
+
+[node name="MenuManager" type="Node" parent="Game Managers" unique_id=1106520598 node_paths=PackedStringArray("hud_layer")]
+script = ExtResource("4_ny1bo")
+hud_layer = NodePath("../../Game Visuals/HudLayer")
+
+[node name="LevelManager" type="Node" parent="Game Managers" unique_id=122054348 node_paths=PackedStringArray("level_root")]
+script = ExtResource("6_ny1bo")
+level_root = NodePath("../../Game Visuals/Game World/LevelRoot")
+
+[node name="SystemsManager" type="Node" parent="Game Managers" unique_id=324568637 node_paths=PackedStringArray("systems_root")]
+script = ExtResource("7_ny1bo")
+systems_root = NodePath("../../Game Logic/SystemsRoot")
+
+[node name="Game Logic" type="Node" parent="." unique_id=597480495]
+
+[node name="SystemsRoot" type="Node" parent="Game Logic" unique_id=937777928]
+
+[node name="Game Visuals" type="Node" parent="." unique_id=2147392527]
+
+[node name="Game World" type="Node2D" parent="Game Visuals" unique_id=272735714]
+process_mode = 1
+
+[node name="LevelRoot" type="Node2D" parent="Game Visuals/Game World" unique_id=1384251819]
+
+[node name="UnitRoot" type="Node2D" parent="Game Visuals/Game World" unique_id=243942455]
+
+[node name="EffectRoot" type="Node2D" parent="Game Visuals/Game World" unique_id=665072367]
+
+[node name="HudLayer" type="CanvasLayer" parent="Game Visuals" unique_id=832136247]
+process_mode = 1
+layer = 10
+
+[node name="PauseLayer" type="CanvasLayer" parent="Game Visuals" unique_id=2076256249]
+process_mode = 2
+layer = 20
+
+[node name="PauseRoot" type="Control" parent="Game Visuals/PauseLayer" unique_id=1231104255]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="TransitionLayer" type="CanvasLayer" parent="Game Visuals" unique_id=1884801615]
+process_mode = 3
+layer = 100
+
+[node name="TransitionRoot" type="Control" parent="Game Visuals/TransitionLayer" unique_id=708322505]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="DebugLayer" type="CanvasLayer" parent="Game Visuals" unique_id=465593609]
+process_mode = 3
+layer = 128
+
+[node name="DebugRoot" type="Control" parent="Game Visuals/DebugLayer" unique_id=1125996499]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+script = ExtResource("1_eh18w")
+
+[node name="DebugTextOverlay" type="Control" parent="Game Visuals/DebugLayer/DebugRoot" unique_id=872260401]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+mouse_behavior_recursive = 1
+script = ExtResource("3_33aom")
+
+[node name="MarginContainer" type="MarginContainer" parent="Game Visuals/DebugLayer/DebugRoot/DebugTextOverlay" unique_id=1862700271]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Game Visuals/DebugLayer/DebugRoot/DebugTextOverlay/MarginContainer" unique_id=211838738]
+layout_mode = 2
+
+[node name="FpsLabel" type="Label" parent="Game Visuals/DebugLayer/DebugRoot/DebugTextOverlay/MarginContainer/VBoxContainer" unique_id=1542190332]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.41568628, 1, 0.4862745, 1)
+text = "FPS: 15"
+
+[node name="VersionInfo" type="Label" parent="Game Visuals/DebugLayer/DebugRoot/DebugTextOverlay/MarginContainer/VBoxContainer" unique_id=2140942278]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Version: "
+
+[node name="DebugInfo" type="Label" parent="Game Visuals/DebugLayer/DebugRoot/DebugTextOverlay/MarginContainer/VBoxContainer" unique_id=1868100076]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Lorem Ipsum
+"

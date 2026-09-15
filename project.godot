@@ -12,13 +12,13 @@ config_version=5
 
 config/name="DinoGame"
 config/version="0.1.0"
-run/main_scene="uid://dmmqk7uk3snk0"
+run/main_scene="uid://dj0rb3kcv87em"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="uid://c4u71t86iv2yc"
 
 [autoload]
 
-ManagerBus="*uid://tk844fhksf1r"
+ManagerSignalBus="*uid://tk844fhksf1r"
 
 [display]
 
