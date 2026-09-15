@@ -20,7 +20,7 @@ signal load_level(level : String)
 signal load_system(system : String)
 
 @warning_ignore("unused_signal")
-signal load_unit(unit : String)
+signal load_units(unit : Array[String])
 
 @warning_ignore("unused_signal")
 signal change_game_state_request()

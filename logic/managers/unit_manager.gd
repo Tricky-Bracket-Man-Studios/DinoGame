@@ -11,16 +11,16 @@ extends Node
 #endregion
 
 #region private variables (undersocre prefixed snake_case):
-var _current_units_array : Array[Node2D] = []
+var _current_units_array : Array[Node2D] = [] # Make Dictionary = {}
 #endregion
 
 #region (optional) build in virtural methods:
 func _ready() -> void:
-	ManagerSignalBus.load_unit.connect(load_unit)
+	ManagerSignalBus.load_units.connect(load_units)
 #endregion
 
 #region public methods (non underscore prefixed snake_case):
-func load_unit(unit_object : Array[String]) -> void:
+func load_units(unit_object : Array[String]) -> void:
 	_perform_load_unit.call_deferred(unit_object)
 #endregion
 	
