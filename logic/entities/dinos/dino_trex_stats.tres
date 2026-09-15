@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="DinoStats" format=3 uid="uid://de2l73reh6vtn"]
+
+[ext_resource type="Script" uid="uid://bukbbjd5wdaqs" path="res://logic/entities/dinos/dino_stats.gd" id="1_h460y"]
+[ext_resource type="Texture2D" uid="uid://borymykqeg4yv" path="res://assets/debug/debug_tyran.png" id="2_8mypb"]
+
+[resource]
+script = ExtResource("1_h460y")
+attack = 20.0
+special_attack = 5.0
+texture = ExtResource("2_8mypb")
+metadata/_custom_type_script = "uid://bukbbjd5wdaqs"
