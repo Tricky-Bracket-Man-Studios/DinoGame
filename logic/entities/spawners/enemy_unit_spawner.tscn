@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://tcgspyldr6b"]
+
+[ext_resource type="Script" uid="uid://cvjie85du42df" path="res://logic/entities/spawners/enemy_unit_spawner.gd" id="1_yhv87"]
+
+[node name="Enemy Unit Spawner" type="Node2D" unique_id=1994437375]
+script = ExtResource("1_yhv87")

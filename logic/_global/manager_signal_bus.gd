@@ -3,7 +3,7 @@ extends Node
 ## Description: The purpose of this script is to hold all relevant signals for managers
 ## Filename: manager_signal_bus.gd
 ## Author(s): Matthew Perry,
-## Last Updated: 09/13/2026
+## Last Updated: 09/15/2026
 
 #region signals (snake_case):
 
@@ -20,7 +20,7 @@ signal load_level(level : String)
 signal load_system(system : String)
 
 @warning_ignore("unused_signal")
-signal load_units(unit : Array[String])
+signal load_units(unit : Array[String], spawn_location : Vector2)
 
 @warning_ignore("unused_signal")
 signal change_game_state_request()
@@ -50,8 +50,8 @@ signal calculate_battle_request()
 signal calculated_battle_request()
 
 @warning_ignore("unused_signal")
-signal spawn_enemy_dino
+signal spawned_enemy_dino(dino_uid : String)
 
 @warning_ignore("unused_signal")
-signal spawn_player_dino
+signal spawned_player_dino(dino_uid : String)
 #endregion

@@ -4,7 +4,7 @@ extends Node
 ## Description: The purpose of this script is to orcastrate levels for the game.
 ## Filename: level_manager.gd
 ## Author(s): Matthew Perry,
-## Last Updated: 09/12/2026
+## Last Updated: 09/15/2026
 
 #region export variables (snake_case):
 @export var level_root : Node2D
@@ -42,7 +42,7 @@ func _perform_load_level(level_object_uid : String) -> void:
 		ManagerSignalBus.return_to_main_menu.emit()
 		return
 		
-	var new_level : Node = new_level_packed.instantiate()
+	var new_level : Node2D = new_level_packed.instantiate()
 	
 	if not new_level:
 		push_error(name + ": Could not instantiate new level" + level_object_uid)

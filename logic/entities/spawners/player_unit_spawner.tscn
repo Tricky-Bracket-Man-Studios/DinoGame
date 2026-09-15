@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cpwee6wdcq8i1"]
+
+[ext_resource type="Script" uid="uid://bi8puiehwtxbu" path="res://logic/entities/spawners/player_unit_spawner.gd" id="1_tenik"]
+
+[node name="Player Unit Spawner" type="Node2D" unique_id=828323023]
+script = ExtResource("1_tenik")

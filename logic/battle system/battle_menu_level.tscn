@@ -1,17 +1,18 @@
 [gd_scene format=3 uid="uid://0usuedl4d18t"]
 
-[ext_resource type="PackedScene" uid="uid://b8owwx7xkxeri" path="res://logic/entities/spawners/unit_spawner.tscn" id="1_82xhs"]
+[ext_resource type="PackedScene" uid="uid://tcgspyldr6b" path="res://logic/entities/spawners/enemy_unit_spawner.tscn" id="1_0lh4r"]
 [ext_resource type="PackedScene" uid="uid://dqonvgfca11x4" path="res://logic/entities/dinos/dino_trex.tscn" id="2_17dch"]
 [ext_resource type="PackedScene" uid="uid://dfcgy3o7qm7nd" path="res://logic/entities/dinos/dino_trike.tscn" id="3_0lh4r"]
+[ext_resource type="PackedScene" uid="uid://cpwee6wdcq8i1" path="res://logic/entities/spawners/player_unit_spawner.tscn" id="3_lpaoy"]
 
 [node name="BattleMenuLevel" type="Node2D" unique_id=1992736613]
 
 [node name="Spawns" type="Node2D" parent="." unique_id=1963083878]
 
-[node name="EnemyUnitSpawner" parent="Spawns" unique_id=1664450174 instance=ExtResource("1_82xhs")]
+[node name="Enemy Unit Spawner" parent="Spawns" unique_id=1994437375 instance=ExtResource("1_0lh4r")]
 position = Vector2(321, 93)
 unit_to_spawn = ExtResource("2_17dch")
 
-[node name="PlayerUnitSpawner" parent="Spawns" unique_id=1151181317 instance=ExtResource("1_82xhs")]
+[node name="Player Unit Spawner" parent="Spawns" unique_id=828323023 instance=ExtResource("3_lpaoy")]
 position = Vector2(188, 226)
 unit_to_spawn = ExtResource("3_0lh4r")
