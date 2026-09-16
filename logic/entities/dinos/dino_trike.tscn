@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dfcgy3o7qm7nd"]
+
+[ext_resource type="Script" uid="uid://d2npev1a84fn7" path="res://logic/entities/dinos/dino_logic.gd" id="1_78s5t"]
+[ext_resource type="PackedScene" uid="uid://baqfqynd0wchc" path="res://logic/components/health systems/health_system.tscn" id="1_eon41"]
+[ext_resource type="Resource" uid="uid://kn35ebtuis14" path="res://logic/entities/dinos/dino_trike_stats.tres" id="2_3535x"]
+[ext_resource type="Texture2D" uid="uid://cbskf3sb2em0v" path="res://assets/debug/debug_trike.png" id="4_78s5t"]
+
+[node name="Dino Trike" type="Node2D" unique_id=1520941578 node_paths=PackedStringArray("health_system", "sprite")]
+script = ExtResource("1_78s5t")
+stats = ExtResource("2_3535x")
+health_system = NodePath("Health System")
+sprite = NodePath("Sprite2D")
+
+[node name="Health System" parent="." unique_id=761511741 instance=ExtResource("1_eon41")]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=476901575]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("4_78s5t")

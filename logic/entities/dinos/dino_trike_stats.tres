@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="DinoStats" format=3 uid="uid://kn35ebtuis14"]
+
+[ext_resource type="Script" uid="uid://bukbbjd5wdaqs" path="res://logic/entities/dinos/dino_stats.gd" id="1_m4kuo"]
+[ext_resource type="Texture2D" uid="uid://cbskf3sb2em0v" path="res://assets/debug/debug_trike.png" id="2_wjmjj"]
+
+[resource]
+script = ExtResource("1_m4kuo")
+max_health = 150.0
+current_health = 0.0
+defense = 20.0
+texture = ExtResource("2_wjmjj")
