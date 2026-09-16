@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dcpnglbr72cr1"]
 
-[ext_resource type="Script" uid="uid://b7qrdxsntamtm" path="res://logic/components/state_machines/battle_state_machine.gd" id="1_2sv71"]
+[ext_resource type="Script" uid="uid://b7qrdxsntamtm" path="res://logic/battle system/battle state machine/battle_state_machine.gd" id="1_2sv71"]
 [ext_resource type="Script" uid="uid://dmrqxk362maca" path="res://logic/battle system/phases/attack_phase.gd" id="2_qw13n"]
 [ext_resource type="Script" uid="uid://dtvixhjpyb8we" path="res://logic/battle system/phases/battle_phase.gd" id="3_jpgah"]
 [ext_resource type="Script" uid="uid://ccm253s3g5klg" path="res://logic/battle system/phases/defense_phase.gd" id="4_tq8n0"]

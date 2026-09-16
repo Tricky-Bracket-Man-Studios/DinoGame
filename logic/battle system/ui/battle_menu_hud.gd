@@ -3,7 +3,7 @@ extends Control
 ## Description: The purpose of this script is to hold the logic for the battle menu.
 ## Filename: battle_menu_hud.gd
 ## Author(s): Matthew Perry,
-## Last Updated: 09/13/2026
+## Last Updated: 09/16/2026
 
 #region export variables (snake_case):
 @export_category("Buttons")
@@ -49,7 +49,7 @@ func _ready() -> void:
 		null_defense_card.pressed.connect(_on_null_card_chosen)
 		
 		retry_button.pressed.connect(_on_retry_pressed)
-
+#endregion
 
 #region private methods (undersocre prefixed snake_case):
 func _on_attack_card_chosen() -> void:

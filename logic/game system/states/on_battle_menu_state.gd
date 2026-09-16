@@ -18,6 +18,7 @@ func enter() -> void:
 		ManagerSignalBus.load_menu.emit(BATTLE_MENU_UI)
 		ManagerSignalBus.load_level.emit(BATTLE_MENU_LEVEL)
 		ManagerSignalBus.load_system.emit(BATTLE_MENU_SYSTEMS)
+		
 		ManagerSignalBus.change_game_state_request.connect(_start_game)
 
 func process(_delta: float) -> void:

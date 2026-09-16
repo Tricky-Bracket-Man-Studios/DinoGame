@@ -37,11 +37,13 @@ func _calculate_battle() -> void:
 						print(_players_dino._attack - _enemys_dino._defense)
 						var damage : float = _players_dino._attack - _enemys_dino._defense
 						_enemys_dino.health_system.damage_health_points(damage)
+						
 					IDino.DinoBattleStance.SPECIAL_DEFEND:
 						print(_enemys_dino.name + ": I chose " + IDino.DinoBattleStance.find_key(_enemys_dino._current_stance))
 						print(_players_dino._attack - (_enemys_dino._special_defense / 2))
 						var damage : float = _players_dino._attack - (_enemys_dino._special_defense / 2)
 						_enemys_dino.health_system.damage_health_points(damage)
+						
 					IDino.DinoBattleStance.NULL_DEFEND:
 						print(_enemys_dino.name + ": I chose " + IDino.DinoBattleStance.find_key(_enemys_dino._current_stance))
 						print(_players_dino._attack - 0)
