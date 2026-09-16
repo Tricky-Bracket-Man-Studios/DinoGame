@@ -12,6 +12,6 @@ extends UnitSpawner
 func _ready() -> void:
 	_spawn_unit()
 	
-	ManagerSignalBus.spawned_enemy_dino.emit(unit_uid)
+	ManagerSignalBus.spawned_enemy_dino.emit.call_deferred(unit_uid)
 
 #endregion

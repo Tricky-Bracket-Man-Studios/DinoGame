@@ -29,7 +29,7 @@ signal change_game_state_request()
 signal change_battle_state_request()
 
 @warning_ignore("unused_signal")
-signal change_players_dino_stance(stance : String)
+signal change_players_dino_stance(stance : IDino.DinoBattleStance)
 
 @warning_ignore("unused_signal")
 signal enable_attack_phase_hud_request()
@@ -54,4 +54,10 @@ signal spawned_enemy_dino(dino_uid : String)
 
 @warning_ignore("unused_signal")
 signal spawned_player_dino(dino_uid : String)
+
+@warning_ignore("unused_signal")
+signal get_unit_request(dino_uid : String)
+
+@warning_ignore("unused_signal")
+signal deliver_unit(dino_uid : String, dino_unit : Node2D)
 #endregion

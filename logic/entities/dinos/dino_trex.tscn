@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dqonvgfca11x4"]
 
-[ext_resource type="Script" uid="uid://d2npev1a84fn7" path="res://logic/entities/dinos/dino_trex_logic.gd" id="1_ppewn"]
+[ext_resource type="Script" uid="uid://d2npev1a84fn7" path="res://logic/entities/dinos/dino_logic.gd" id="1_ppewn"]
 [ext_resource type="PackedScene" uid="uid://baqfqynd0wchc" path="res://logic/components/health systems/health_system.tscn" id="2_c3v6y"]
 [ext_resource type="Resource" uid="uid://de2l73reh6vtn" path="res://logic/entities/dinos/dino_trex_stats.tres" id="2_kkayi"]
 [ext_resource type="Texture2D" uid="uid://borymykqeg4yv" path="res://assets/debug/debug_tyran.png" id="4_pdsek"]

@@ -17,6 +17,7 @@ var _current_units_dictionary : Dictionary = {}
 #region (optional) build in virtural methods:
 func _ready() -> void:
 	ManagerSignalBus.load_units.connect(load_units)
+	ManagerSignalBus.get_unit_request.connect(get_unit)
 #endregion
 
 #region public methods (non underscore prefixed snake_case):
@@ -31,6 +32,12 @@ func unload_units() -> void:
 		
 		# Wait to allow the queued deletion to process so it is out of the scene tree
 		await get_tree().process_frame
+
+func get_unit(unit_uid : String) -> void:
+	if is_instance_valid( _current_units_dictionary[unit_uid]):
+		ManagerSignalBus.deliver_unit.emit(unit_uid, _current_units_dictionary[unit_uid])
+	else:
+		return
 #endregion
 	
 #region private methods (undersocre prefixed snake_case):

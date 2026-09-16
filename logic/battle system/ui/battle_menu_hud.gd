@@ -45,32 +45,32 @@ func _ready() -> void:
 #region private methods (undersocre prefixed snake_case):
 func _on_attack_card_chosen() -> void:
 	print(name + ": chose the attack card!")
-	ManagerSignalBus.change_players_dino_stance.emit("AttackStance")
+	ManagerSignalBus.change_players_dino_stance.emit(IDino.DinoBattleStance.ATTACK)
 	ManagerSignalBus.change_battle_state_request.emit()
 
 func _on_special_attack_card_chosen() -> void:
 	print(name + ": chose the special card!")
-	ManagerSignalBus.change_players_dino_stance.emit("SpecialAttackStance")
+	ManagerSignalBus.change_players_dino_stance.emit(IDino.DinoBattleStance.SPECIAL_ATTACK)
 	ManagerSignalBus.change_battle_state_request.emit()
 
 func _on_ultimate_attack_card_chosen() -> void:
 	print(name + ": chose the ultimate card!")
-	ManagerSignalBus.change_players_dino_stance.emit("UltimateAttackStance")
+	ManagerSignalBus.change_players_dino_stance.emit(IDino.DinoBattleStance.ULTIMATE_ATTACK)
 	ManagerSignalBus.change_battle_state_request.emit()
 	
 func _on_defense_card_chosen() -> void:
 	print(name + ": chose the defense card!")
-	ManagerSignalBus.change_players_dino_stance.emit("DefenseStance")
+	ManagerSignalBus.change_players_dino_stance.emit(IDino.DinoBattleStance.DEFEND)
 	ManagerSignalBus.change_battle_state_request.emit()
 	
 func _on_special_defense_card_chosen() -> void:
 	print(name + ": chose the Special Defense card!")
-	ManagerSignalBus.change_players_dino_stance.emit("SpecialDefenseStance")
+	ManagerSignalBus.change_players_dino_stance.emit(IDino.DinoBattleStance.SPECIAL_DEFEND)
 	ManagerSignalBus.change_battle_state_request.emit()
 	
 func _on_null_card_chosen() -> void:
 	print(name + ": chose the ultimate card!")
-	ManagerSignalBus.change_players_dino_stance.emit("NullStance")
+	ManagerSignalBus.change_players_dino_stance.emit(IDino.DinoBattleStance.NULL_DEFEND)
 	ManagerSignalBus.change_battle_state_request.emit()
 
 func _validate_cards() -> void:
