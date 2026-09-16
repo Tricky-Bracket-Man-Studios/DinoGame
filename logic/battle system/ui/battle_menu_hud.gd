@@ -6,6 +6,7 @@ extends Control
 ## Last Updated: 09/13/2026
 
 #region export variables (snake_case):
+@export_category("Buttons")
 @export var attack_card : Button
 @export var special_attack_card : Button
 @export var ultimate_attack_card : Button
@@ -14,8 +15,12 @@ extends Control
 @export var special_defense_card : Button
 @export var null_defense_card : Button
 
+@export  var retry_button : Button
+
+@export_category("Containers")
 @export var attack_phase_hud : BoxContainer
 @export var defense_phase_hud : BoxContainer
+@export var retry_menu : Control
 #endregion
 
 #region private variables (undersocre prefixed snake_case):
@@ -26,8 +31,11 @@ var _cards_are_valid : bool = true
 func _ready() -> void:
 	ManagerSignalBus.enable_attack_phase_hud_request.connect(_enable_attack_phase_hud)
 	ManagerSignalBus.enable_defense_phase_hud_request.connect(_enable_defense_phase_hud)
+	ManagerSignalBus.enable_retry_menu.connect(_enable_retry_menu)
+	
 	ManagerSignalBus.disable_attack_phase_hud_request.connect(_disable_attack_phase_hud)
 	ManagerSignalBus.disable_defense_phase_hud_request.connect(_disable_defense_phase_hud)
+	ManagerSignalBus.disable_retry_menu.connect(_disable_retry_menu)
 	
 	_validate_cards()
 	
@@ -40,6 +48,7 @@ func _ready() -> void:
 		special_defense_card.pressed.connect(_on_special_defense_card_chosen)
 		null_defense_card.pressed.connect(_on_null_card_chosen)
 		
+		retry_button.pressed.connect(_on_retry_pressed)
 
 
 #region private methods (undersocre prefixed snake_case):
@@ -72,6 +81,9 @@ func _on_null_card_chosen() -> void:
 	print(name + ": chose the ultimate card!")
 	ManagerSignalBus.change_players_dino_stance.emit(IDino.DinoBattleStance.NULL_DEFEND)
 	ManagerSignalBus.change_battle_state_request.emit()
+	
+func _on_retry_pressed() -> void:
+	ManagerSignalBus.change_game_state_request.emit()
 
 func _validate_cards() -> void:
 	var cards : Array[Button] = [
@@ -94,4 +106,10 @@ func _enable_defense_phase_hud() -> void:
 	
 func _disable_defense_phase_hud() -> void:
 	defense_phase_hud.hide()
+	
+func _enable_retry_menu() -> void:
+	retry_menu.show()
+		
+func _disable_retry_menu() -> void:
+	retry_menu.hide()
 #endregion

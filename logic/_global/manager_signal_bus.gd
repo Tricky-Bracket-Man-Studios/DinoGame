@@ -11,6 +11,9 @@ extends Node
 signal return_to_main_menu()
 
 @warning_ignore("unused_signal")
+signal reload_menu()
+
+@warning_ignore("unused_signal")
 signal load_menu(menu : String)
 
 @warning_ignore("unused_signal")
@@ -21,6 +24,9 @@ signal load_system(system : String)
 
 @warning_ignore("unused_signal")
 signal load_units(unit : Array[String], spawn_location : Vector2)
+
+@warning_ignore("unused_signal")
+signal unload_units()
 
 @warning_ignore("unused_signal")
 signal change_game_state_request()
@@ -38,10 +44,16 @@ signal enable_attack_phase_hud_request()
 signal enable_defense_phase_hud_request()
 
 @warning_ignore("unused_signal")
+signal enable_retry_menu()
+
+@warning_ignore("unused_signal")
 signal disable_attack_phase_hud_request()
 
 @warning_ignore("unused_signal")
 signal disable_defense_phase_hud_request()
+
+@warning_ignore("unused_signal")
+signal disable_retry_menu()
 
 @warning_ignore("unused_signal")
 signal calculate_battle_request()
@@ -60,4 +72,10 @@ signal get_unit_request(dino_uid : String)
 
 @warning_ignore("unused_signal")
 signal deliver_unit(dino_uid : String, dino_unit : Node2D)
+
+@warning_ignore("unused_signal")
+signal trigger_battle_loss_phase()
+
+@warning_ignore("unused_signal")
+signal trigger_battle_won_phase()
 #endregion

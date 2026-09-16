@@ -4,7 +4,7 @@ extends IHealthSystem
 ## related to damage and health points should be handled by this script.
 ## Filename: unit_health_system.gd
 ## Author(s): Matthew Perry,
-## Last Updated: 09/14/2026
+## Last Updated: 09/15/2026
 
 #region private variables (undersocre prefixed snake_case):
 var _max_health_points : float = 100

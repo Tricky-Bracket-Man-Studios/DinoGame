@@ -4,20 +4,21 @@ extends Node
 ## Description: The purpose of this script is to orcastrate units for the game.
 ## Filename: unit_manager.gd
 ## Author(s): Matthew Perry,
-## Last Updated: 09/15/2026
+## Last Updated: 09/16/2026
 
 #region export variables (snake_case):
 @export var unit_root : Node2D
 #endregion
 
 #region private variables (undersocre prefixed snake_case):
-var _current_units_dictionary : Dictionary = {}
+var _current_units_dictionary : Dictionary[String, Node2D] = {}
 #endregion
 
 #region (optional) build in virtural methods:
 func _ready() -> void:
 	ManagerSignalBus.load_units.connect(load_units)
 	ManagerSignalBus.get_unit_request.connect(get_unit)
+	ManagerSignalBus.unload_units.connect(unload_units)
 #endregion
 
 #region public methods (non underscore prefixed snake_case):
@@ -25,13 +26,21 @@ func load_units(unit_objects : Array[String], units_spawn_position) -> void:
 	_perform_load_unit.call_deferred(unit_objects, units_spawn_position)
 
 func unload_units() -> void:
-	if is_instance_valid(_current_units_dictionary):
-		for unit in _current_units_dictionary:
-			unit.queue_free()
+	print(name + ": signal detected!")
+	if _current_units_dictionary != {}:
+		print(name + ": dictionary valid!")
+		for unit_id in _current_units_dictionary.keys():
+			var unit_node : Node2D = _current_units_dictionary[unit_id]
+			
+			print(name + ": deleting: " + str(unit_node))
+			unit_node.queue_free()
+			
 		_current_units_dictionary.clear()
-		
+			
 		# Wait to allow the queued deletion to process so it is out of the scene tree
 		await get_tree().process_frame
+			
+		
 
 func get_unit(unit_uid : String) -> void:
 	if is_instance_valid( _current_units_dictionary[unit_uid]):

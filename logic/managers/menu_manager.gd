@@ -12,6 +12,7 @@ const MAIN_MENU : String = "uid://cij05tkirhkac" # Default Menu
 
 #region private variables (undersocre prefixed snake_case):
 var _current_menu : Control = null
+var _current_menu_uid : String = ""
 #endregion
 
 #region export variables (snake_case):
@@ -26,10 +27,10 @@ func _ready() -> void:
 
 #region public methods (non underscore prefixed snake_case):
 func return_to_main_menu() -> void:
-	if not is_instance_valid(MAIN_MENU):
-		push_error(name + ": Main Menu uid is invalid, double check it" + MAIN_MENU)
-		return
 	load_menu(MAIN_MENU)
+	
+func reload_menu() -> void:
+	load_menu(_current_menu_uid)
 
 func load_menu(menu_object : String) -> void:
 	_perform_load_menu.call_deferred(menu_object)
@@ -71,6 +72,7 @@ func _perform_load_menu(menu_object_uid : String) -> void:
 		return
 	
 	_current_menu = new_menu as Control
+	_current_menu_uid = menu_object_uid
 	
 	if not is_instance_valid(hud_layer):
 		push_error(name + ": Hud Layer not Assigned!")

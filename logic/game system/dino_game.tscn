@@ -44,6 +44,8 @@ systems_root = NodePath("../../Game Logic/SystemsRoot")
 script = ExtResource("8_g7dty")
 unit_root = NodePath("../../Game Visuals/Game World/UnitRoot")
 
+[node name="SaveManager" type="Node" parent="Game Managers" unique_id=1454532464]
+
 [node name="Game Logic" type="Node" parent="." unique_id=597480495]
 
 [node name="SystemsRoot" type="Node" parent="Game Logic" unique_id=937777928]
