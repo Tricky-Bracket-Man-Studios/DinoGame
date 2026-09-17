@@ -1,52 +1,56 @@
 [gd_scene format=3 uid="uid://dj0rb3kcv87em"]
 
-[ext_resource type="Script" uid="uid://bpif1fpdy0ig8" path="res://logic/components/state_machines/state_machine.gd" id="1_6hciu"]
-[ext_resource type="Script" uid="uid://ckyk045hy0gm7" path="res://logic/game system/states/first_game_bootup_state.gd" id="2_g7dty"]
-[ext_resource type="Script" uid="uid://71brnghoy683" path="res://logic/game system/states/on_main_menu_state.gd" id="3_xgopj"]
-[ext_resource type="Script" uid="uid://cngwy60wx0vvb" path="res://logic/game system/states/on_battle_menu_state.gd" id="4_ujfid"]
-[ext_resource type="Script" uid="uid://bxicaghh46xw8" path="res://logic/managers/menu_manager.gd" id="5_3kalf"]
-[ext_resource type="Script" uid="uid://v0y8bfd1a3f5" path="res://logic/managers/level_manager.gd" id="6_cui58"]
-[ext_resource type="Script" uid="uid://dqmf8upc40foa" path="res://logic/managers/systems_manager.gd" id="7_n5mc6"]
-[ext_resource type="Script" uid="uid://c5fjr0ug4j7he" path="res://logic/managers/unit_manager.gd" id="8_g7dty"]
-[ext_resource type="Script" uid="uid://conhoy267rvxv" path="res://logic/debug tools/debug_script.gd" id="8_opi75"]
-[ext_resource type="Script" uid="uid://doqd7glu45k1" path="res://logic/ui/debug/debug_hud.gd" id="9_ai044"]
-[ext_resource type="Script" uid="uid://dy5ueuvao5r1o" path="res://logic/game system/save_manager.gd" id="9_xgopj"]
+[ext_resource type="Script" uid="uid://bpif1fpdy0ig8" path="res://logic/components/state_machines/state_machine.gd" id="1_bpqeb"]
+[ext_resource type="Script" uid="uid://ckyk045hy0gm7" path="res://logic/_game core systems/states/first_game_bootup_state.gd" id="2_461m0"]
+[ext_resource type="Script" uid="uid://71brnghoy683" path="res://logic/_game core systems/states/on_main_menu_state.gd" id="3_h7m1y"]
+[ext_resource type="Script" uid="uid://cngwy60wx0vvb" path="res://logic/_game core systems/states/on_battle_menu_state.gd" id="4_bku1g"]
+[ext_resource type="Script" uid="uid://bxicaghh46xw8" path="res://logic/managers/menu_manager.gd" id="5_mkuen"]
+[ext_resource type="Script" uid="uid://v0y8bfd1a3f5" path="res://logic/managers/level_manager.gd" id="6_yb5ty"]
+[ext_resource type="Script" uid="uid://dqmf8upc40foa" path="res://logic/managers/systems_manager.gd" id="7_x1kh6"]
+[ext_resource type="Script" uid="uid://c5fjr0ug4j7he" path="res://logic/managers/unit_manager.gd" id="8_ol64y"]
+[ext_resource type="Script" uid="uid://dy5ueuvao5r1o" path="res://logic/managers/save_manager.gd" id="9_4t76c"]
+[ext_resource type="Script" uid="uid://conhoy267rvxv" path="res://logic/debug tools/debug_script.gd" id="10_nq632"]
+[ext_resource type="Script" uid="uid://doqd7glu45k1" path="res://logic/ui/debug/debug_hud.gd" id="11_tog7b"]
 
 [node name="Dino Game" type="Node" unique_id=666613440]
 
 [node name="Game Managers" type="Node" parent="." unique_id=1596685514]
 
 [node name="GamestateManger" type="Node" parent="Game Managers" unique_id=784459762 node_paths=PackedStringArray("default_state")]
-script = ExtResource("1_6hciu")
+script = ExtResource("1_bpqeb")
 default_state = NodePath("FirstGameBootup")
 
 [node name="FirstGameBootup" type="Node" parent="Game Managers/GamestateManger" unique_id=1559958140]
-script = ExtResource("2_g7dty")
+script = ExtResource("2_461m0")
 
 [node name="OnMainMenu" type="Node" parent="Game Managers/GamestateManger" unique_id=138789829]
-script = ExtResource("3_xgopj")
+script = ExtResource("3_h7m1y")
 
 [node name="OnBattleMenu" type="Node" parent="Game Managers/GamestateManger" unique_id=700101193]
-script = ExtResource("4_ujfid")
+script = ExtResource("4_bku1g")
 
 [node name="MenuManager" type="Node" parent="Game Managers" unique_id=1106520598 node_paths=PackedStringArray("hud_layer")]
-script = ExtResource("5_3kalf")
+script = ExtResource("5_mkuen")
 hud_layer = NodePath("../../Game Visuals/HudLayer")
 
 [node name="LevelManager" type="Node" parent="Game Managers" unique_id=122054348 node_paths=PackedStringArray("level_root")]
-script = ExtResource("6_cui58")
+script = ExtResource("6_yb5ty")
 level_root = NodePath("../../Game Visuals/Game World/LevelRoot")
 
 [node name="SystemsManager" type="Node" parent="Game Managers" unique_id=324568637 node_paths=PackedStringArray("systems_root")]
-script = ExtResource("7_n5mc6")
+script = ExtResource("7_x1kh6")
 systems_root = NodePath("../../Game Logic/SystemsRoot")
 
 [node name="UnitManager" type="Node" parent="Game Managers" unique_id=138225631 node_paths=PackedStringArray("unit_root")]
-script = ExtResource("8_g7dty")
+script = ExtResource("8_ol64y")
 unit_root = NodePath("../../Game Visuals/Game World/UnitRoot")
 
+[node name="PlayerLogic" type="Node" parent="Game Managers/UnitManager" unique_id=1875643837]
+
+[node name="EnemyLogic" type="Node" parent="Game Managers/UnitManager" unique_id=469330930]
+
 [node name="SaveManager" type="Node" parent="Game Managers" unique_id=1454532464]
-script = ExtResource("9_xgopj")
+script = ExtResource("9_4t76c")
 
 [node name="Game Logic" type="Node" parent="." unique_id=597480495]
 
@@ -99,7 +103,7 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
-script = ExtResource("8_opi75")
+script = ExtResource("10_nq632")
 
 [node name="DebugTextOverlay" type="Control" parent="Game Visuals/DebugLayer/DebugRoot" unique_id=872260401]
 anchors_preset = 0
@@ -107,7 +111,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
 mouse_behavior_recursive = 1
-script = ExtResource("9_ai044")
+script = ExtResource("11_tog7b")
 
 [node name="MarginContainer" type="MarginContainer" parent="Game Visuals/DebugLayer/DebugRoot/DebugTextOverlay" unique_id=1862700271]
 layout_mode = 0
