@@ -16,7 +16,7 @@ func _ready() -> void:
 	_special_defense = stats.special_defense
 	_level = stats.level
 	_current_experince = stats.current_experience
-	sprite.texture = stats.texture
+
 #endregion
 
 #region private methods (undersocre prefixed snake_case):
