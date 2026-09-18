@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://c5fjr0ug4j7he" path="res://logic/managers/unit_manager.gd" id="8_g7dty"]
 [ext_resource type="Script" uid="uid://conhoy267rvxv" path="res://logic/debug tools/debug_script.gd" id="8_opi75"]
 [ext_resource type="Script" uid="uid://doqd7glu45k1" path="res://logic/ui/debug/debug_hud.gd" id="9_ai044"]
+[ext_resource type="Script" uid="uid://dy5ueuvao5r1o" path="res://logic/game system/save_manager.gd" id="9_xgopj"]
 
 [node name="Dino Game" type="Node" unique_id=666613440]
 
@@ -45,6 +46,7 @@ script = ExtResource("8_g7dty")
 unit_root = NodePath("../../Game Visuals/Game World/UnitRoot")
 
 [node name="SaveManager" type="Node" parent="Game Managers" unique_id=1454532464]
+script = ExtResource("9_xgopj")
 
 [node name="Game Logic" type="Node" parent="." unique_id=597480495]
 
