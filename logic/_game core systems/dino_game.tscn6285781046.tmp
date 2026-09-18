@@ -66,7 +66,6 @@ current_dino = ExtResource("10_h7m1y")
 
 [node name="EnemyLogic" type="Node" parent="Game Managers/UnitManager" unique_id=469330930]
 script = ExtResource("11_bku1g")
-battle_1_dino = ExtResource("6_x1kh6")
 
 [node name="SaveManager" type="Node" parent="Game Managers" unique_id=1454532464]
 script = ExtResource("9_4t76c")

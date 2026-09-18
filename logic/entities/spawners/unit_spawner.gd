@@ -19,18 +19,9 @@ var unit_uid : String
 #region private methods (undersocre prefixed snake_case):
 
 func _spawn_unit() -> void:
-	if unit_to_spawn == null:
-		push_error(name + ": No unit was set to spawn, please set a unit to spawn")
-		return
+	unit_uid = CommonUtils.get_uid_from_scene(unit_to_spawn)
 	
-	var file_path : String = unit_to_spawn.resource_path
-	
-	var uid_int : int = ResourceLoader.get_resource_uid(file_path)
-	
-	var uid_string : String = ResourceUID.id_to_text(uid_int)
-	
-	unit_uid = uid_string
-		
-	ManagerSignalBus.load_units.emit([uid_string] as Array[String], self.position)
+	if unit_uid != "":
+		ManagerSignalBus.load_units.emit([unit_uid] as Array[String], self.position)
 
 #endregion

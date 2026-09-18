@@ -71,7 +71,25 @@ signal spawned_player_dino(dino_uid : String)
 signal get_unit_request(dino_uid : String)
 
 @warning_ignore("unused_signal")
+signal get_player_dino_request()
+
+@warning_ignore("unused_signal")
+signal get_enemy_dino_request()
+
+@warning_ignore("unused_signal")
+signal set_enemy_dino_request(dino_object : PackedScene)
+
+@warning_ignore("unused_signal")
 signal deliver_unit(dino_uid : String, dino_unit : Node2D)
+
+@warning_ignore("unused_signal")
+signal deliver_player_dino(dino_object : PackedScene)
+
+@warning_ignore("unused_signal")
+signal deliver_enemy_dino(dino_object : PackedScene)
+
+@warning_ignore("unused_signal")
+signal trigger_battle_1()
 
 @warning_ignore("unused_signal")
 signal trigger_battle_loss_phase()
