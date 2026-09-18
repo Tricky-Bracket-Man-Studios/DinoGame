@@ -8,7 +8,7 @@ extends IState
 
 #region constants (CONSTANT_CASE):
 const MAIN_MENU_HUD : String = "uid://cij05tkirhkac"
-const BATTLE_MENU_STATE : String = "OnBattleMenu"
+const BATTLE_SELECT_STATE : String = "BattleSelect"
 #endregion
 
 #region public methods (non underscore prefixed snake_case):
@@ -25,5 +25,5 @@ func exit() -> void:
 
 #region private variables (undersocre prefixed snake_case):
 func _start_game() -> void:
-	change_state.emit(self, BATTLE_MENU_STATE)
+	change_state.emit(self, BATTLE_SELECT_STATE)
 #endregion

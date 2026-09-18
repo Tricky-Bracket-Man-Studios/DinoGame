@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cij05tkirhkac"]
 
-[ext_resource type="Script" uid="uid://degg1dkutyxq5" path="res://logic/ui/main menu/main_menu_hud.gd" id="1_fc5bh"]
+[ext_resource type="Script" uid="uid://degg1dkutyxq5" path="res://logic/ui/main menu/main_menu_hud_logic.gd" id="1_857hp"]
 
 [node name="MainMenu" type="Control" unique_id=295787511 node_paths=PackedStringArray("start_button", "options_button", "quit_button")]
 layout_mode = 3
@@ -9,7 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_fc5bh")
+script = ExtResource("1_857hp")
 start_button = NodePath("VBoxContainer/StartButton")
 options_button = NodePath("VBoxContainer/OptionsButton")
 quit_button = NodePath("VBoxContainer/QuitButton")

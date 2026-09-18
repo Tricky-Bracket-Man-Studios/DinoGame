@@ -4,10 +4,12 @@ extends Node
 ## Description: The purpose of this script is to orcastrate units for the game.
 ## Filename: unit_manager.gd
 ## Author(s): Matthew Perry,
-## Last Updated: 09/16/2026
+## Last Updated: 09/17/2026
 
 #region export variables (snake_case):
 @export var unit_root : Node2D
+@export var player_logic : PlayerLogic
+@export var enemy_logic : EnemyLogic
 #endregion
 
 #region private variables (undersocre prefixed snake_case):
@@ -19,9 +21,13 @@ func _ready() -> void:
 	ManagerSignalBus.load_units.connect(load_units)
 	ManagerSignalBus.get_unit_request.connect(get_unit)
 	ManagerSignalBus.unload_units.connect(unload_units)
+	ManagerSignalBus.get_player_dino_request.connect(get_player_dino)
+	ManagerSignalBus.get_enemy_dino_request.connect(get_enemy_dino)
+	ManagerSignalBus.set_enemy_dino_request.connect(set_enemy_dino)
 #endregion
 
 #region public methods (non underscore prefixed snake_case):
+
 func load_units(unit_objects : Array[String], units_spawn_position) -> void:
 	_perform_load_unit.call_deferred(unit_objects, units_spawn_position)
 
@@ -39,14 +45,23 @@ func unload_units() -> void:
 			
 		# Wait to allow the queued deletion to process so it is out of the scene tree
 		await get_tree().process_frame
-			
-		
 
 func get_unit(unit_uid : String) -> void:
 	if is_instance_valid( _current_units_dictionary[unit_uid]):
 		ManagerSignalBus.deliver_unit.emit(unit_uid, _current_units_dictionary[unit_uid])
 	else:
 		return
+
+func get_player_dino() -> void:
+	ManagerSignalBus.deliver_player_dino.emit(player_logic.current_dino)
+
+func get_enemy_dino() -> void:
+	ManagerSignalBus.deliver_enemy_dino.emit(enemy_logic.current_dino)
+
+func set_enemy_dino(dino_object : PackedScene) -> void:
+	enemy_logic.current_dino = dino_object
+	
+
 #endregion
 	
 #region private methods (undersocre prefixed snake_case):

@@ -19,6 +19,7 @@ config/icon="uid://c4u71t86iv2yc"
 [autoload]
 
 ManagerSignalBus="*uid://tk844fhksf1r"
+CommonUtils="*uid://bwcrj10te6acw"
 
 [display]
 
