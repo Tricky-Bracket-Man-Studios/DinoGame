@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://cnoql2mk0ocff"]
+
+[ext_resource type="Script" uid="uid://d2npev1a84fn7" path="res://logic/entities/dinos/dino_logic.gd" id="1_8p1ra"]
+[ext_resource type="PackedScene" uid="uid://baqfqynd0wchc" path="res://logic/components/health systems/health_system.tscn" id="2_bbaod"]
+[ext_resource type="Texture2D" uid="uid://borymykqeg4yv" path="res://assets/debug/debug_tyran.png" id="3_m522e"]
+
+[node name="BaseDino" type="Node2D" unique_id=1061601758 node_paths=PackedStringArray("health_system", "sprite")]
+script = ExtResource("1_8p1ra")
+health_system = NodePath("Health System")
+sprite = NodePath("Sprite2D")
+
+[node name="Health System" parent="." unique_id=761511741 instance=ExtResource("2_bbaod")]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1710639524]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_m522e")

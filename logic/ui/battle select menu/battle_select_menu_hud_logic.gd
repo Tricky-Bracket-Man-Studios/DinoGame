@@ -15,12 +15,14 @@ const BATTLE_MENU : String = "uid://d0xl27pl6mfr2"
 #endregion
 
 #region private variables (undersocre prefixed snake_case):
-var _buttons_array : Array[Button] = [battle1]
+var _buttons_array : Array[Button]
 var _buttons_are_valid : bool = true
 #endregion
 
 #region (optional) build in virtural methods:
 func _ready() -> void:
+	_buttons_array.append(battle1)
+	
 	_validate_buttons(_buttons_array)
 	
 	if _buttons_are_valid:
@@ -31,11 +33,11 @@ func _ready() -> void:
 
 #region private methods (undersocre prefixed snake_case):
 func _on_battle1_button_pressed() -> void:
-	ManagerSignalBus.change_game_state_request.emit()
+	ManagerSignalBus.trigger_battle_1.emit()
 	
 func _validate_buttons(buttons : Array[Button]) -> void:
 	for button in buttons:
 		if not is_instance_valid(button):
-			push_error(name + ": a button is not assigned")
+			push_error(name + ": a button is not assigned" + str(button))
 			_buttons_are_valid = false
 #endregion
