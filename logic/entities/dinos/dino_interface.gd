@@ -24,7 +24,7 @@ enum DinoBattleStance
 #region export variables (snake_case):
 @export var stats : DinoStats
 @export var health_system : IHealthSystem
-@export var sprite : Sprite2D
+@export var sprite : AnimatedSprite2D
 #endregion
 
 #region private variables (undersocre prefixed snake_case):

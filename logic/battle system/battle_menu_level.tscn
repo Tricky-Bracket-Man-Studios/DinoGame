@@ -4,15 +4,248 @@
 [ext_resource type="PackedScene" uid="uid://dqonvgfca11x4" path="res://logic/entities/dinos/dino_trex_object.tscn" id="2_17dch"]
 [ext_resource type="PackedScene" uid="uid://dfcgy3o7qm7nd" path="res://logic/entities/dinos/dino_trike_object.tscn" id="3_0lh4r"]
 [ext_resource type="PackedScene" uid="uid://cpwee6wdcq8i1" path="res://logic/entities/spawners/player_unit_spawner.tscn" id="3_lpaoy"]
+[ext_resource type="Texture2D" uid="uid://ca1oxs65pamcf" path="res://assets/sprites/dino battle bg combined.png" id="5_78xyk"]
+[ext_resource type="Texture2D" uid="uid://dueou40khnwoi" path="res://assets/sprites/dino battle bg and anim.png" id="6_4lalj"]
+[ext_resource type="AudioStream" uid="uid://wju66srqg1y8" path="res://assets/music/dino battle music.wav" id="7_4lalj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0eohf"]
+atlas = ExtResource("5_78xyk")
+region = Rect2(0, 0, 650, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ls8q"]
+atlas = ExtResource("5_78xyk")
+region = Rect2(650, 0, 650, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3gki0"]
+atlas = ExtResource("5_78xyk")
+region = Rect2(1300, 0, 650, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h3eny"]
+atlas = ExtResource("5_78xyk")
+region = Rect2(1950, 0, 650, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qm42g"]
+atlas = ExtResource("5_78xyk")
+region = Rect2(2600, 0, 650, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_acupg"]
+atlas = ExtResource("5_78xyk")
+region = Rect2(0, 360, 650, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ah8k6"]
+atlas = ExtResource("5_78xyk")
+region = Rect2(650, 360, 650, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a6mqx"]
+atlas = ExtResource("5_78xyk")
+region = Rect2(1300, 360, 650, 360)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v1ka0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0eohf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ls8q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3gki0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h3eny")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qm42g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_acupg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ah8k6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a6mqx")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_yf4ba"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_psjun"]
+resource_name = "new_animation"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.96666664, 3.0333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.16699013, 0.18800247, 0.28352052, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_spbyf"]
+_data = {
+&"RESET": SubResource("Animation_yf4ba"),
+&"new_animation": SubResource("Animation_psjun")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xoe3v"]
+atlas = ExtResource("6_4lalj")
+region = Rect2(4550, 1800, 650, 360)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_suk2g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xoe3v")
+}],
+"loop": 1,
+"name": &"intro",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_y2hs0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background/AnimatedSprite Fight Intro:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(335, 451)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Background/AnimatedSprite Fight Intro:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.39499998, 0.39499998)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Background/AnimatedSprite Fight Intro:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_88vmi"]
+resource_name = "new_animation"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background/AnimatedSprite Fight Intro:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.0333333, 2.03, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(335, 451), Vector2(337, 190.455), Vector2(338, 141.79), Vector2(338, 96.62)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Background/AnimatedSprite Fight Intro:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.0333333, 2.02, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.39499998, 0.39499998), Vector2(0.62, 0.62), Vector2(0.985, 0.985), Vector2(1.365, 1.365)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Background/AnimatedSprite Fight Intro:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2.0333333, 3.3333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8p16a"]
+_data = {
+&"RESET": SubResource("Animation_y2hs0"),
+&"new_animation": SubResource("Animation_88vmi")
+}
 
 [node name="BattleMenuLevel" type="Node2D" unique_id=1992736613]
 
 [node name="Spawns" type="Node2D" parent="." unique_id=1963083878]
 
 [node name="Enemy Unit Spawner" parent="Spawns" unique_id=1994437375 instance=ExtResource("1_0lh4r")]
-position = Vector2(321, 93)
+position = Vector2(320, 93)
 unit_to_spawn = ExtResource("2_17dch")
 
 [node name="Player Unit Spawner" parent="Spawns" unique_id=828323023 instance=ExtResource("3_lpaoy")]
-position = Vector2(188, 226)
+position = Vector2(323, 245)
 unit_to_spawn = ExtResource("3_0lh4r")
+
+[node name="Background" type="Node2D" parent="." unique_id=1843832382]
+
+[node name="AnimatedSprite BG" type="AnimatedSprite2D" parent="Background" unique_id=1242768139]
+position = Vector2(322, 181)
+sprite_frames = SubResource("SpriteFrames_v1ka0")
+autoplay = "default"
+frame = 7
+frame_progress = 1.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Background/AnimatedSprite BG" unique_id=728588966]
+libraries/ = SubResource("AnimationLibrary_spbyf")
+autoplay = &"new_animation"
+
+[node name="AnimatedSprite Fight Intro" type="AnimatedSprite2D" parent="Background" unique_id=1423532587]
+position = Vector2(335, 451)
+scale = Vector2(0.39499998, 0.39499998)
+sprite_frames = SubResource("SpriteFrames_suk2g")
+animation = &"intro"
+autoplay = "intro"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Background/AnimatedSprite Fight Intro" unique_id=2057217038]
+root_node = NodePath("../../..")
+libraries/ = SubResource("AnimationLibrary_8p16a")
+autoplay = &"new_animation"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Background" unique_id=1118530587]
+stream = ExtResource("7_4lalj")
+autoplay = true
