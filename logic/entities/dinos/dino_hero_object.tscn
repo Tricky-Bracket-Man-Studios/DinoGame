@@ -3,16 +3,108 @@
 [ext_resource type="Script" uid="uid://d2npev1a84fn7" path="res://logic/entities/dinos/dino_logic.gd" id="1_qbbta"]
 [ext_resource type="Resource" uid="uid://dbem8053hyjf4" path="res://logic/entities/dinos/dino_hero_stats.tres" id="2_dlhk6"]
 [ext_resource type="PackedScene" uid="uid://baqfqynd0wchc" path="res://logic/components/health systems/health_system.tscn" id="2_nlwu3"]
-[ext_resource type="Texture2D" uid="uid://c4u71t86iv2yc" path="res://icon.svg" id="4_dlhk6"]
+[ext_resource type="Texture2D" uid="uid://cjy2rxax76t45" path="res://assets/sprites/dino jam hero sprite sheet.png" id="4_dlhk6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ouo8l"]
+atlas = ExtResource("4_dlhk6")
+region = Rect2(168, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q527r"]
+atlas = ExtResource("4_dlhk6")
+region = Rect2(210, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0akre"]
+atlas = ExtResource("4_dlhk6")
+region = Rect2(252, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ydog"]
+atlas = ExtResource("4_dlhk6")
+region = Rect2(294, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d4jwi"]
+atlas = ExtResource("4_dlhk6")
+region = Rect2(336, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oidqb"]
+atlas = ExtResource("4_dlhk6")
+region = Rect2(378, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6acdd"]
+atlas = ExtResource("4_dlhk6")
+region = Rect2(420, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qhjrk"]
+atlas = ExtResource("4_dlhk6")
+region = Rect2(0, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_75sal"]
+atlas = ExtResource("4_dlhk6")
+region = Rect2(42, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ipff"]
+atlas = ExtResource("4_dlhk6")
+region = Rect2(84, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vnjcs"]
+atlas = ExtResource("4_dlhk6")
+region = Rect2(126, 0, 42, 42)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_suk2g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ouo8l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q527r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0akre")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ydog")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d4jwi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oidqb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6acdd")
+}],
+"loop": 0,
+"name": &"attack",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qhjrk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_75sal")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ipff")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vnjcs")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [node name="Dino Hero" type="Node2D" unique_id=1061601758 node_paths=PackedStringArray("health_system", "sprite")]
 script = ExtResource("1_qbbta")
 stats = ExtResource("2_dlhk6")
 health_system = NodePath("Health System")
-sprite = NodePath("Sprite2D")
+sprite = NodePath("")
 
 [node name="Health System" parent="." unique_id=761511741 instance=ExtResource("2_nlwu3")]
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1710639524]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=747964227]
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("4_dlhk6")
+sprite_frames = SubResource("SpriteFrames_suk2g")
+animation = &"attack"
+autoplay = "idle"
