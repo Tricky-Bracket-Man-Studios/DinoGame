@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://baqfqynd0wchc" path="res://logic/components/health systems/health_system.tscn" id="2_nlwu3"]
 [ext_resource type="Texture2D" uid="uid://c4u71t86iv2yc" path="res://icon.svg" id="4_dlhk6"]
 
-[node name="DinoHeroObject" type="Node2D" unique_id=1061601758 node_paths=PackedStringArray("health_system", "sprite")]
+[node name="Dino Hero" type="Node2D" unique_id=1061601758 node_paths=PackedStringArray("health_system", "sprite")]
 script = ExtResource("1_qbbta")
 stats = ExtResource("2_dlhk6")
 health_system = NodePath("Health System")

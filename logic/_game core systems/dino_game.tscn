@@ -13,10 +13,10 @@
 [ext_resource type="Script" uid="uid://c5fjr0ug4j7he" path="res://logic/managers/unit_manager.gd" id="8_ol64y"]
 [ext_resource type="Script" uid="uid://dy5ueuvao5r1o" path="res://logic/managers/save_manager.gd" id="9_4t76c"]
 [ext_resource type="Script" uid="uid://m71msinjhxa8" path="res://logic/entities/player_logic.gd" id="9_461m0"]
-[ext_resource type="PackedScene" uid="uid://d3wak40xk5leb" path="res://logic/entities/dinos/dino_hero_object.tscn" id="10_h7m1y"]
 [ext_resource type="Script" uid="uid://conhoy267rvxv" path="res://logic/debug tools/debug_script.gd" id="10_nq632"]
 [ext_resource type="Script" uid="uid://ctmodc07q6gg4" path="res://logic/_game core systems/enemy_logic.gd" id="11_bku1g"]
 [ext_resource type="Script" uid="uid://doqd7glu45k1" path="res://logic/ui/debug/debug_hud.gd" id="11_tog7b"]
+[ext_resource type="PackedScene" uid="uid://dfcgy3o7qm7nd" path="res://logic/entities/dinos/dino_trike_object.tscn" id="13_x1kh6"]
 
 [node name="Dino Game" type="Node" unique_id=666613440]
 
@@ -62,7 +62,7 @@ enemy_logic = NodePath("EnemyLogic")
 
 [node name="PlayerLogic" type="Node" parent="Game Managers/UnitManager" unique_id=1875643837]
 script = ExtResource("9_461m0")
-current_dino = ExtResource("10_h7m1y")
+current_dino = ExtResource("13_x1kh6")
 
 [node name="EnemyLogic" type="Node" parent="Game Managers/UnitManager" unique_id=469330930]
 script = ExtResource("11_bku1g")

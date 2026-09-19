@@ -10,7 +10,6 @@ extends UnitSpawner
 #region (optional) build in virtural methods:
 
 func _ready() -> void:
-<<<<<<< HEAD
 	ManagerSignalBus.deliver_enemy_dino.connect(_spawn_enemy_unit)
 	ManagerSignalBus.get_enemy_dino_request.emit()
 
@@ -20,10 +19,8 @@ func _ready() -> void:
 
 func _spawn_enemy_unit(dino_object : PackedScene) -> void:
 	unit_to_spawn = dino_object
-
-=======
+	
 	await get_tree().create_timer(3).timeout
->>>>>>> main
 	_spawn_unit()
 
 	ManagerSignalBus.spawned_enemy_dino.emit.call_deferred(unit_uid)
