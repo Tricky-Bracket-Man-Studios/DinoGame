@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://dj0rb3kcv87em"]
 
-[ext_resource type="Script" uid="uid://bpif1fpdy0ig8" path="res://logic/components/state_machines/state_machine.gd" id="1_bpqeb"]
-[ext_resource type="Script" uid="uid://ckyk045hy0gm7" path="res://logic/_game core systems/states/first_game_bootup_state.gd" id="2_461m0"]
-[ext_resource type="Script" uid="uid://71brnghoy683" path="res://logic/_game core systems/states/on_main_menu_state.gd" id="3_h7m1y"]
-[ext_resource type="Script" uid="uid://cngwy60wx0vvb" path="res://logic/_game core systems/states/on_battle_menu_state.gd" id="4_bku1g"]
+[ext_resource type="Script" uid="uid://bagdu5ory72e4" path="res://logic/_game core systems/game state machine/game_state_machine.gd" id="1_x1kh6"]
+[ext_resource type="Script" uid="uid://ckyk045hy0gm7" path="res://logic/_game core systems/game state machine/states/first_game_bootup_state.gd" id="2_461m0"]
+[ext_resource type="Script" uid="uid://71brnghoy683" path="res://logic/_game core systems/game state machine/states/on_main_menu_state.gd" id="3_h7m1y"]
+[ext_resource type="Script" uid="uid://cngwy60wx0vvb" path="res://logic/_game core systems/game state machine/states/on_battle_menu_state.gd" id="4_bku1g"]
 [ext_resource type="Script" uid="uid://bxicaghh46xw8" path="res://logic/managers/menu_manager.gd" id="5_mkuen"]
-[ext_resource type="Script" uid="uid://b0w5y4kli7hc6" path="res://logic/_game core systems/states/load_battle_1_state.gd" id="5_yb5ty"]
+[ext_resource type="Script" uid="uid://b0w5y4kli7hc6" path="res://logic/_game core systems/game state machine/states/load_battle_1_state.gd" id="5_yb5ty"]
 [ext_resource type="PackedScene" uid="uid://dqonvgfca11x4" path="res://logic/entities/dinos/dino_trex_object.tscn" id="6_x1kh6"]
 [ext_resource type="Script" uid="uid://v0y8bfd1a3f5" path="res://logic/managers/level_manager.gd" id="6_yb5ty"]
-[ext_resource type="Script" uid="uid://h0nhfe6ubos6" path="res://logic/_game core systems/states/battle_select_state.gd" id="7_ol64y"]
+[ext_resource type="Script" uid="uid://h0nhfe6ubos6" path="res://logic/_game core systems/game state machine/states/battle_select_state.gd" id="7_ol64y"]
 [ext_resource type="Script" uid="uid://dqmf8upc40foa" path="res://logic/managers/systems_manager.gd" id="7_x1kh6"]
 [ext_resource type="Script" uid="uid://c5fjr0ug4j7he" path="res://logic/managers/unit_manager.gd" id="8_ol64y"]
 [ext_resource type="Script" uid="uid://dy5ueuvao5r1o" path="res://logic/managers/save_manager.gd" id="9_4t76c"]
@@ -22,8 +22,9 @@
 
 [node name="Game Managers" type="Node" parent="." unique_id=1596685514]
 
-[node name="GamestateManger" type="Node" parent="Game Managers" unique_id=784459762 node_paths=PackedStringArray("default_state")]
-script = ExtResource("1_bpqeb")
+[node name="GamestateManger" type="Node" parent="Game Managers" unique_id=784459762 node_paths=PackedStringArray("main_menu", "default_state")]
+script = ExtResource("1_x1kh6")
+main_menu = NodePath("OnMainMenu")
 default_state = NodePath("FirstGameBootup")
 
 [node name="FirstGameBootup" type="Node" parent="Game Managers/GamestateManger" unique_id=1559958140]

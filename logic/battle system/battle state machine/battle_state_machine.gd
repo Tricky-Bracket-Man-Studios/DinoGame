@@ -1,10 +1,11 @@
+class_name BattleStateMachine
 extends StateMachine
 
 ## Description: The purpose of this script is to handle the battle states and 
 ## their transitions.
 ## Filename: battle_state_machine.gd
 ## Author(s): Matthew Perry,
-## Last Updated: 09/13/2026
+## Last Updated: 09/18/2026
 
 #region private variables (undersocre prefixed snake_case):
 var _previous_state_name : String

@@ -20,6 +20,7 @@ func process(_delta: float) -> void:
 	pass
 
 func exit() -> void:
+	ManagerSignalBus.unload_menu.emit()
 	ManagerSignalBus.change_game_state_request.disconnect(_start_game)
 #endregion
 

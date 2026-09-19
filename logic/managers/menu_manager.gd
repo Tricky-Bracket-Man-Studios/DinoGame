@@ -7,43 +7,53 @@ extends Node
 ## Last Updated: 09/13/2026
 
 #region constants (CONSTANT_CASE):
-const MAIN_MENU : String = "uid://cij05tkirhkac" # Default Menu
+
+const MAIN_MENU : String = "uid://cij05tkirhkac"
+
 #endregion
 
 #region private variables (undersocre prefixed snake_case):
+
 var _current_menu : Control = null
 var _current_menu_uid : String = ""
+
 #endregion
 
 #region export variables (snake_case):
+
 @export var hud_layer : CanvasLayer
+
 #endregion
 
 #region (optional) build in virtural methods:
+
 func _ready() -> void:
 	ManagerSignalBus.load_menu.connect(load_menu)
-	ManagerSignalBus.return_to_main_menu.connect(return_to_main_menu)
+	ManagerSignalBus.unload_menu.connect(unload_current_menu)
+
 #endregion
 
 #region public methods (non underscore prefixed snake_case):
-func return_to_main_menu() -> void:
-	load_menu(MAIN_MENU)
-	
+
 func reload_menu() -> void:
 	load_menu(_current_menu_uid)
 
 func load_menu(menu_object : String) -> void:
 	_perform_load_menu.call_deferred(menu_object)
-#endregion
-	
-#region private methods (undersocre prefixed snake_case):
-func _perform_load_menu(menu_object_uid : String) -> void:
+
+func unload_current_menu() -> void:
 	if is_instance_valid(_current_menu):
 		_current_menu.queue_free()
 		_current_menu = null
-		
+
 		# Wait to allow the queued deletion to process so it is out of the scene tree
 		await get_tree().process_frame
+
+#endregion
+
+#region private methods (undersocre prefixed snake_case):
+func _perform_load_menu(menu_object_uid : String) -> void:
+	unload_current_menu()
 	
 	var new_menu_packed : PackedScene = (
 			ResourceLoader.load(menu_object_uid, "PackedScene") as PackedScene
@@ -52,7 +62,7 @@ func _perform_load_menu(menu_object_uid : String) -> void:
 	if new_menu_packed == null:
 		push_error("Could not load menu as a packed scene: " + menu_object_uid + ". Returning to Main Menu")
 		if menu_object_uid != MAIN_MENU:
-			load_menu(MAIN_MENU)
+			ManagerSignalBus.return_to_main_menu.emit()
 		return
 		
 	var new_menu : Control = new_menu_packed.instantiate()
@@ -60,7 +70,7 @@ func _perform_load_menu(menu_object_uid : String) -> void:
 	if not new_menu:
 		push_error("Could not instantiate new menu " + menu_object_uid)
 		if menu_object_uid != MAIN_MENU:
-			load_menu(MAIN_MENU)
+			ManagerSignalBus.return_to_main_menu.emit()
 		return
 		
 		
@@ -68,7 +78,7 @@ func _perform_load_menu(menu_object_uid : String) -> void:
 		new_menu.free()  # Level must be freed to avoid unreferenced orphan nodes
 		push_error("Loaded menu is not of type IMenu " + menu_object_uid)
 		if menu_object_uid != MAIN_MENU:
-			load_menu(MAIN_MENU)
+			ManagerSignalBus.return_to_main_menu.emit()
 		return
 	
 	_current_menu = new_menu as Control

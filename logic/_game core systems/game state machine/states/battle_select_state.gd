@@ -30,6 +30,7 @@ func process(_delta: float) -> void:
 
 func exit() -> void:
 	ManagerSignalBus.trigger_battle_1.disconnect(_start_battle_1)
+	ManagerSignalBus.unload_menu.emit()
 		
 
 #endregion

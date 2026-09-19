@@ -29,7 +29,22 @@ signal load_units(unit : Array[String], spawn_location : Vector2)
 signal unload_units()
 
 @warning_ignore("unused_signal")
+signal unload_menu()
+
+@warning_ignore("unused_signal")
+signal unload_system()
+
+@warning_ignore("unused_signal")
+signal unload_level()
+
+@warning_ignore("unused_signal")
 signal change_game_state_request()
+
+@warning_ignore("unused_signal")
+signal change_game_state_battle_select()
+
+@warning_ignore("unused_signal")
+signal change_game_state_battle_menu()
 
 @warning_ignore("unused_signal")
 signal change_battle_state_request()
@@ -47,6 +62,9 @@ signal enable_defense_phase_hud_request()
 signal enable_retry_menu()
 
 @warning_ignore("unused_signal")
+signal enable_victory_menu()
+
+@warning_ignore("unused_signal")
 signal disable_attack_phase_hud_request()
 
 @warning_ignore("unused_signal")
@@ -54,6 +72,9 @@ signal disable_defense_phase_hud_request()
 
 @warning_ignore("unused_signal")
 signal disable_retry_menu()
+
+@warning_ignore("unused_signal")
+signal disable_victory_menu()
 
 @warning_ignore("unused_signal")
 signal calculate_battle_request()

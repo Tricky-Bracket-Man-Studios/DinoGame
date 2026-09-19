@@ -11,6 +11,7 @@ const BATTLE_MENU_UI : String = "uid://bhpmunnatpoaf"
 const BATTLE_MENU_LEVEL : String = "uid://0usuedl4d18t"
 const BATTLE_MENU_SYSTEMS : String = "uid://dcpnglbr72cr1"
 const BATTLE_MENU_STATE : String = "OnBattleMenu"
+const BATTLE_SELECT_MENU_STATE : String = "BattleSelect"
 #endregion
 
 #region public methods (non underscore prefixed snake_case):
@@ -19,16 +20,24 @@ func enter() -> void:
 		ManagerSignalBus.load_level.emit(BATTLE_MENU_LEVEL)
 		ManagerSignalBus.load_system.emit(BATTLE_MENU_SYSTEMS)
 		
-		ManagerSignalBus.change_game_state_request.connect(_start_game)
+		ManagerSignalBus.change_game_state_battle_menu.connect(_change_state_to_battle_menu)
+		ManagerSignalBus.change_game_state_battle_select.connect(_change_state_to_battle_select)
 
 func process(_delta: float) -> void:
 	pass
 
 func exit() -> void:
-	ManagerSignalBus.change_game_state_request.disconnect(_start_game)
+	ManagerSignalBus.change_game_state_battle_menu.disconnect(_change_state_to_battle_menu)
+	ManagerSignalBus.change_game_state_battle_select.disconnect(_change_state_to_battle_select)
+	
 	ManagerSignalBus.unload_units.emit()
+	ManagerSignalBus.unload_level.emit()
+	ManagerSignalBus.unload_menu.emit()
+	ManagerSignalBus.unload_system.emit()
 #endregion
 
-func _start_game() -> void:
-	
+func _change_state_to_battle_menu() -> void:
 	change_state.emit(self, BATTLE_MENU_STATE)
+	
+func _change_state_to_battle_select() -> void:
+	change_state.emit(self, BATTLE_SELECT_MENU_STATE)

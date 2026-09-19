@@ -32,17 +32,14 @@ func load_units(unit_objects : Array[String], units_spawn_position) -> void:
 	_perform_load_unit.call_deferred(unit_objects, units_spawn_position)
 
 func unload_units() -> void:
-	print(name + ": signal detected!")
 	if _current_units_dictionary != {}:
-		print(name + ": dictionary valid!")
 		for unit_id in _current_units_dictionary.keys():
 			var unit_node : Node2D = _current_units_dictionary[unit_id]
-			
-			print(name + ": deleting: " + str(unit_node))
+
 			unit_node.queue_free()
-			
+
 		_current_units_dictionary.clear()
-			
+
 		# Wait to allow the queued deletion to process so it is out of the scene tree
 		await get_tree().process_frame
 
