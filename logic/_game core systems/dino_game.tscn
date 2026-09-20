@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://dj0rb3kcv87em"]
 
 [ext_resource type="Script" uid="uid://bpif1fpdy0ig8" path="res://logic/components/state_machines/state_machine.gd" id="1_bpqeb"]
-[ext_resource type="Script" uid="uid://ckyk045hy0gm7" path="res://logic/_game core systems/states/first_game_bootup_state.gd" id="2_461m0"]
-[ext_resource type="Script" uid="uid://71brnghoy683" path="res://logic/_game core systems/states/on_main_menu_state.gd" id="3_h7m1y"]
-[ext_resource type="Script" uid="uid://cngwy60wx0vvb" path="res://logic/_game core systems/states/on_battle_menu_state.gd" id="4_bku1g"]
+[ext_resource type="Script" uid="uid://ckyk045hy0gm7" path="res://logic/game system/states/first_game_bootup_state.gd" id="2_461m0"]
+[ext_resource type="Script" uid="uid://71brnghoy683" path="res://logic/game system/states/on_main_menu_state.gd" id="3_h7m1y"]
+[ext_resource type="Script" uid="uid://cngwy60wx0vvb" path="res://logic/game system/states/on_battle_menu_state.gd" id="4_bku1g"]
 [ext_resource type="Script" uid="uid://bxicaghh46xw8" path="res://logic/managers/menu_manager.gd" id="5_mkuen"]
 [ext_resource type="Script" uid="uid://b0w5y4kli7hc6" path="res://logic/_game core systems/states/load_battle_1_state.gd" id="5_yb5ty"]
 [ext_resource type="PackedScene" uid="uid://dqonvgfca11x4" path="res://logic/entities/dinos/dino_trex_object.tscn" id="6_x1kh6"]

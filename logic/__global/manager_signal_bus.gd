@@ -35,7 +35,7 @@ signal change_game_state_request()
 signal change_battle_state_request()
 
 @warning_ignore("unused_signal")
-signal change_players_dino_stance(stance : IDino.DinoBattleStance)
+signal change_players_dino_stance(stance)
 
 @warning_ignore("unused_signal")
 signal enable_attack_phase_hud_request()
