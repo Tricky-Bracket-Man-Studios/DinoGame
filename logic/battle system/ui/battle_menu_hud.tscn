@@ -1,6 +1,12 @@
 [gd_scene format=3 uid="uid://bhpmunnatpoaf"]
 
 [ext_resource type="Script" uid="uid://d4c528k1pwiwv" path="res://logic/battle system/ui/battle_menu_hud.gd" id="1_jy0as"]
+[ext_resource type="Texture2D" uid="uid://dfqv1so1o5s7r" path="res://assets/sprites/dino attack card real.png" id="2_lk2vp"]
+[ext_resource type="Texture2D" uid="uid://lo6l6mgdp113" path="res://assets/sprites/dino special attack card real.png" id="3_k5xx3"]
+[ext_resource type="Texture2D" uid="uid://68lhppv3r6in" path="res://assets/sprites/dino ult attack card real.png" id="4_tdugd"]
+[ext_resource type="Texture2D" uid="uid://xrgtlrkpc0yy" path="res://assets/sprites/dino block card real.png" id="5_sls62"]
+[ext_resource type="Texture2D" uid="uid://vapmvrpji58e" path="res://assets/sprites/dino counter block card real.png" id="6_y86tw"]
+[ext_resource type="Texture2D" uid="uid://bb4q6a1o5pn1y" path="res://assets/sprites/dino null block card real.png" id="7_bftjy"]
 
 [node name="BattleMenu" type="Control" unique_id=818550227 node_paths=PackedStringArray("attack_card", "special_attack_card", "ultimate_attack_card", "defense_card", "special_defense_card", "null_defense_card", "retry_button", "attack_phase_hud", "defense_phase_hud", "retry_menu")]
 layout_mode = 3
@@ -23,45 +29,54 @@ retry_menu = NodePath("RetryMenu")
 
 [node name="AttackPhase" type="HBoxContainer" parent="." unique_id=730349946]
 layout_mode = 0
-offset_left = 347.0
-offset_top = 265.0
-offset_right = 606.0
-offset_bottom = 329.0
+offset_left = 352.00003
+offset_top = 255.00002
+offset_right = 735.0
+offset_bottom = 395.0
+scale = Vector2(0.745, 0.745)
 alignment = 1
 
 [node name="Attack" type="Button" parent="AttackPhase" unique_id=2038595331]
+texture_filter = 1
 layout_mode = 2
-text = "Attack"
+icon = ExtResource("2_lk2vp")
 
 [node name="SpecialAttack" type="Button" parent="AttackPhase" unique_id=1633930144]
+texture_filter = 1
 layout_mode = 2
-text = "Spe. Att."
+icon = ExtResource("3_k5xx3")
 
 [node name="Ultimate" type="Button" parent="AttackPhase" unique_id=2113427523]
+texture_filter = 1
 layout_mode = 2
-text = "Ultimate"
+icon = ExtResource("4_tdugd")
 
 [node name="DefendPhase" type="HBoxContainer" parent="." unique_id=277157681]
 visible = false
 layout_mode = 0
-offset_left = 304.0
-offset_top = 261.0
-offset_right = 642.0
-offset_bottom = 333.0
+offset_left = 352.0
+offset_top = 255.0
+offset_right = 739.0
+offset_bottom = 395.0
+scale = Vector2(0.745, 0.745)
 alignment = 1
 
 [node name="Defend" type="Button" parent="DefendPhase" unique_id=880804169]
+texture_filter = 1
 layout_mode = 2
-text = "Defend
+text = "
 "
+icon = ExtResource("5_sls62")
 
 [node name="SpecialDefend" type="Button" parent="DefendPhase" unique_id=560573299]
+texture_filter = 1
 layout_mode = 2
-text = "Spe. Def."
+icon = ExtResource("6_y86tw")
 
 [node name="Null" type="Button" parent="DefendPhase" unique_id=1541299287]
+texture_filter = 1
 layout_mode = 2
-text = "Null"
+icon = ExtResource("7_bftjy")
 
 [node name="AspectRatioContainer2" type="AspectRatioContainer" parent="." unique_id=1213218847]
 layout_mode = 0

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="DinoStats" format=3 uid="uid://dbem8053hyjf4"]
+
+[ext_resource type="Script" uid="uid://bukbbjd5wdaqs" path="res://logic/entities/dinos/dino_stats.gd" id="1_nhvyx"]
+[ext_resource type="Texture2D" uid="uid://c4u71t86iv2yc" path="res://icon.svg" id="2_kd75a"]
+
+[resource]
+script = ExtResource("1_nhvyx")
+texture = ExtResource("2_kd75a")
+metadata/_custom_type_script = "uid://bukbbjd5wdaqs"
