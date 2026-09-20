@@ -108,5 +108,5 @@ sprite = NodePath("AnimatedSprite2D")
 texture_filter = 1
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_suk2g")
-animation = &"attack"
+animation = &"idle"
 autoplay = "idle"

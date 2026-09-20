@@ -6,6 +6,8 @@ extends IDino
 ## Author(s): Matthew Perry,
 ## Last Updated: 09/15/2026
 
+@onready var animated_sprite = $AnimatedSprite2D
+
 #region (optional) build in virtural methods:
 func _ready() -> void:
 	ManagerSignalBus.change_players_dino_stance.connect(_change_current_stance)
@@ -23,5 +25,10 @@ func _ready() -> void:
 
 func _change_current_stance(new_stance : DinoBattleStance) -> void:
 	_current_stance = new_stance
-
+	
+	##if IDino.DinoBattleStance = (ATTACK, SPECIAL_ATTACK, ULTIMATE_ATTACK):
+	##	animated_sprite.play("attack")
+	##else:
+	##	animated_sprite.play("idle")
+		
 #endregion
