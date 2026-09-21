@@ -4,7 +4,7 @@ extends IState
 ## battle, setup and the flow of each state.
 ## Filename: on_battle_menu_state.gd
 ## Author(s): Matthew Perry,
-## Last Updated: 09/17/2026
+## Last Updated: 09/21/2026
 
 #region constants (CONSTANT_CASE):
 const BATTLE_MENU_UI : String = "uid://bhpmunnatpoaf"
@@ -15,11 +15,11 @@ const BATTLE_MENU_STATE : String = "OnBattleMenu"
 
 #region public methods (non underscore prefixed snake_case):
 func enter() -> void:
-		ManagerSignalBus.load_menu.emit(BATTLE_MENU_UI)
-		ManagerSignalBus.load_level.emit(BATTLE_MENU_LEVEL)
-		ManagerSignalBus.load_system.emit(BATTLE_MENU_SYSTEMS)
-		
-		ManagerSignalBus.change_game_state_request.connect(_start_game)
+	ManagerSignalBus.load_level.emit(BATTLE_MENU_LEVEL)
+	ManagerSignalBus.load_system.emit(BATTLE_MENU_SYSTEMS)
+	ManagerSignalBus.load_menu.emit(BATTLE_MENU_UI)
+	
+	ManagerSignalBus.change_game_state_request.connect(_start_game)
 
 func process(_delta: float) -> void:
 	pass
@@ -27,6 +27,9 @@ func process(_delta: float) -> void:
 func exit() -> void:
 	ManagerSignalBus.change_game_state_request.disconnect(_start_game)
 	ManagerSignalBus.unload_units.emit()
+	ManagerSignalBus.unload_level.emit()
+	ManagerSignalBus.unload_menu.emit()
+	ManagerSignalBus.unload_system.emit()
 #endregion
 
 func _start_game() -> void:

@@ -24,6 +24,8 @@ func _ready() -> void:
 	ManagerSignalBus.get_player_dino_request.connect(get_player_dino)
 	ManagerSignalBus.get_enemy_dino_request.connect(get_enemy_dino)
 	ManagerSignalBus.set_enemy_dino_request.connect(set_enemy_dino)
+	ManagerSignalBus.get_player_dino_HP.connect(get_player_dino_HP)
+	ManagerSignalBus.get_enemy_dino_HP.connect(get_enemy_dino_HP)
 #endregion
 
 #region public methods (non underscore prefixed snake_case):
@@ -57,6 +59,30 @@ func get_player_dino() -> void:
 
 func get_enemy_dino() -> void:
 	ManagerSignalBus.deliver_enemy_dino.emit(enemy_logic.current_dino)
+	
+func get_player_dino_HP() -> void:
+	if not _current_units_dictionary.is_empty():
+		var current_dino : IDino = _current_units_dictionary[player_logic.current_dino_uid]
+	
+		var new_hp : String = str(current_dino.health_system.get_current_health_points())
+		
+		await get_tree().create_timer(1).timeout
+		ManagerSignalBus.deliver_player_dino_HP.emit(new_hp)
+	else:
+		await get_tree().create_timer(3).timeout
+		ManagerSignalBus.deliver_player_dino_HP.emit("150")
+	
+func get_enemy_dino_HP() -> void:
+	if not _current_units_dictionary.is_empty():
+		var current_dino : IDino = _current_units_dictionary[enemy_logic.current_dino_uid]
+	
+		var new_hp : String = str(current_dino.health_system.get_current_health_points())
+		
+		await get_tree().create_timer(1).timeout
+		ManagerSignalBus.deliver_enemy_dino_HP.emit(new_hp)
+	else:
+		await get_tree().create_timer(3).timeout
+		ManagerSignalBus.deliver_enemy_dino_HP.emit("100")
 
 func set_enemy_dino(dino_object : PackedScene) -> void:
 	enemy_logic.current_dino = dino_object

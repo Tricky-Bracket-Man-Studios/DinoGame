@@ -148,11 +148,13 @@ text = "FPS: 15"
 
 [node name="VersionInfo" type="Label" parent="Game Visuals/DebugLayer/DebugRoot/DebugTextOverlay/MarginContainer/VBoxContainer" unique_id=2140942278]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 text = "Version: "
 
 [node name="DebugInfo" type="Label" parent="Game Visuals/DebugLayer/DebugRoot/DebugTextOverlay/MarginContainer/VBoxContainer" unique_id=1868100076]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 text = "Lorem Ipsum
 "

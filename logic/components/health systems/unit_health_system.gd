@@ -4,7 +4,7 @@ extends IHealthSystem
 ## related to damage and health points should be handled by this script.
 ## Filename: unit_health_system.gd
 ## Author(s): Matthew Perry,
-## Last Updated: 09/15/2026
+## Last Updated: 09/21/2026
 
 #region private variables (undersocre prefixed snake_case):
 var _max_health_points : float = 100
@@ -42,6 +42,10 @@ func damage_health_points(damage_amount : float) -> void:
 
 func get_current_health_points() -> float :
 	return _current_health_points
+	
+func set_max_health_points(new_max_health_points) -> void:
+	_max_health_points = new_max_health_points
+	_current_health_points = _max_health_points
 	
 func get_max_health_points() -> float :
 	return _max_health_points

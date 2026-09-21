@@ -7,8 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://xrgtlrkpc0yy" path="res://assets/sprites/dino block card real.png" id="5_sls62"]
 [ext_resource type="Texture2D" uid="uid://vapmvrpji58e" path="res://assets/sprites/dino counter block card real.png" id="6_y86tw"]
 [ext_resource type="Texture2D" uid="uid://bb4q6a1o5pn1y" path="res://assets/sprites/dino null block card real.png" id="7_bftjy"]
+[ext_resource type="Script" uid="uid://i0slwrseanpo" path="res://logic/battle system/ui/label_2.gd" id="8_tdugd"]
+[ext_resource type="Script" uid="uid://ct3msm0kqq23f" path="res://logic/battle system/ui/label_3.gd" id="9_sls62"]
 
-[node name="BattleMenu" type="Control" unique_id=818550227 node_paths=PackedStringArray("attack_card", "special_attack_card", "ultimate_attack_card", "defense_card", "special_defense_card", "null_defense_card", "retry_button", "attack_phase_hud", "defense_phase_hud", "retry_menu")]
+[node name="BattleMenu" type="Control" unique_id=818550227 node_paths=PackedStringArray("attack_card", "special_attack_card", "ultimate_attack_card", "defense_card", "special_defense_card", "null_defense_card", "retry_button", "retry_battle_select_button", "retry_main_menu_button", "next_battle_button", "victory_main_menu_button", "victory_battle_select_button", "attack_phase_hud", "defense_phase_hud", "retry_menu", "victory_menu")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -22,12 +24,19 @@ ultimate_attack_card = NodePath("AttackPhase/Ultimate")
 defense_card = NodePath("DefendPhase/Defend")
 special_defense_card = NodePath("DefendPhase/SpecialDefend")
 null_defense_card = NodePath("DefendPhase/Null")
-retry_button = NodePath("RetryMenu/Button")
+retry_button = NodePath("Retry Menu2/VBoxContainer/Retry Button")
+retry_battle_select_button = NodePath("Retry Menu2/VBoxContainer/Battle Select Button")
+retry_main_menu_button = NodePath("Retry Menu2/VBoxContainer/Main Menu Button")
+next_battle_button = NodePath("Victory Menu/VBoxContainer/Next Button")
+victory_main_menu_button = NodePath("Victory Menu/VBoxContainer/Main Menu Button")
+victory_battle_select_button = NodePath("Victory Menu/VBoxContainer/Battle Select Button")
 attack_phase_hud = NodePath("AttackPhase")
 defense_phase_hud = NodePath("DefendPhase")
-retry_menu = NodePath("RetryMenu")
+retry_menu = NodePath("Retry Menu2")
+victory_menu = NodePath("Victory Menu")
 
 [node name="AttackPhase" type="HBoxContainer" parent="." unique_id=730349946]
+visible = false
 layout_mode = 0
 offset_left = 352.00003
 offset_top = 255.00002
@@ -85,11 +94,19 @@ offset_top = 9.0
 offset_right = 376.0
 offset_bottom = 119.0
 
-[node name="Label" type="Label" parent="AspectRatioContainer2" unique_id=1772812468]
+[node name="HBoxContainer" type="HBoxContainer" parent="AspectRatioContainer2" unique_id=509300365]
 layout_mode = 2
-text = "V. Raptor lvl 5
+
+[node name="Label" type="Label" parent="AspectRatioContainer2/HBoxContainer" unique_id=1772812468]
+layout_mode = 2
+text = "T-Rex
 "
 horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="AspectRatioContainer2/HBoxContainer" unique_id=537252676]
+layout_mode = 2
+text = "HP: 100"
+script = ExtResource("8_tdugd")
 
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="." unique_id=1312561777]
 layout_mode = 0
@@ -97,12 +114,20 @@ offset_top = 175.0
 offset_right = 177.0
 offset_bottom = 285.0
 
-[node name="Label" type="Label" parent="AspectRatioContainer" unique_id=632194656]
+[node name="HBoxContainer" type="HBoxContainer" parent="AspectRatioContainer" unique_id=377869913]
 layout_mode = 2
-text = "Steg lvl 6"
+
+[node name="Label" type="Label" parent="AspectRatioContainer/HBoxContainer" unique_id=632194656]
+layout_mode = 2
+text = "Trike"
 horizontal_alignment = 1
 
-[node name="RetryMenu" type="Control" parent="." unique_id=1388096719]
+[node name="Label3" type="Label" parent="AspectRatioContainer/HBoxContainer" unique_id=2081739108]
+layout_mode = 2
+text = "HP: 150"
+script = ExtResource("9_sls62")
+
+[node name="Victory Menu" type="Control" parent="." unique_id=323441271]
 visible = false
 anchors_preset = 0
 offset_left = 191.0
@@ -110,25 +135,88 @@ offset_top = 145.0
 offset_right = 231.0
 offset_bottom = 185.0
 
-[node name="PanelContainer" type="PanelContainer" parent="RetryMenu" unique_id=1813764843]
-layout_mode = 0
-offset_left = -171.0
-offset_top = -115.0
-offset_right = 429.0
+[node name="PanelContainer" type="PanelContainer" parent="Victory Menu" unique_id=640676908]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -4.275
+anchor_top = -2.8750002
+anchor_right = 10.725
+anchor_bottom = 4.625
+
+[node name="Label" type="Label" parent="Victory Menu" unique_id=941295719]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.975
+anchor_top = -2.2250001
+anchor_right = 7.0000005
+anchor_bottom = -0.55
+offset_right = -3.0517578e-05
+text = "Victory! You got GUD!"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Victory Menu" unique_id=1502436901]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.125
+anchor_top = -1.5250001
+anchor_right = 4.8
+anchor_bottom = 0.125
+
+[node name="Next Button" type="Button" parent="Victory Menu/VBoxContainer" unique_id=584159915]
+layout_mode = 2
+text = "Next Battle?"
+
+[node name="Battle Select Button" type="Button" parent="Victory Menu/VBoxContainer" unique_id=599245566]
+layout_mode = 2
+text = "Battle Select"
+
+[node name="Main Menu Button" type="Button" parent="Victory Menu/VBoxContainer" unique_id=1337510661]
+layout_mode = 2
+text = "Main Menu"
+
+[node name="Retry Menu2" type="Control" parent="." unique_id=2041242241]
+visible = false
+anchors_preset = 0
+offset_left = 191.0
+offset_top = 145.0
+offset_right = 231.0
 offset_bottom = 185.0
 
-[node name="Button" type="Button" parent="RetryMenu" unique_id=1705959143]
-layout_mode = 0
-offset_top = -66.0
-offset_right = 249.0
-offset_bottom = -7.0
-text = "Retry?"
+[node name="PanelContainer" type="PanelContainer" parent="Retry Menu2" unique_id=335566234]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -4.275
+anchor_top = -2.8750002
+anchor_right = 10.725
+anchor_bottom = 4.625
 
-[node name="Label" type="Label" parent="RetryMenu" unique_id=1712850454]
-layout_mode = 0
-offset_left = -39.0
-offset_top = -89.0
-offset_right = 280.0
-offset_bottom = -22.0
+[node name="Label" type="Label" parent="Retry Menu2" unique_id=605302913]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.975
+anchor_top = -2.2250001
+anchor_right = 7.0000005
+anchor_bottom = -0.55
+offset_right = -3.0517578e-05
 text = "You loss! GIT GUD!"
 horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Retry Menu2" unique_id=1421595410]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.125
+anchor_top = -1.5250001
+anchor_right = 4.8
+anchor_bottom = 0.125
+
+[node name="Retry Button" type="Button" parent="Retry Menu2/VBoxContainer" unique_id=49707298]
+layout_mode = 2
+text = "Retry?"
+
+[node name="Battle Select Button" type="Button" parent="Retry Menu2/VBoxContainer" unique_id=1779581293]
+layout_mode = 2
+text = "Battle Select"
+
+[node name="Main Menu Button" type="Button" parent="Retry Menu2/VBoxContainer" unique_id=1405531503]
+layout_mode = 2
+text = "Main Menu"

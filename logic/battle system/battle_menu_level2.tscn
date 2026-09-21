@@ -1,0 +1,188 @@
+[gd_scene format=3 uid="uid://bhpmunnatpoaf"]
+
+[ext_resource type="Script" uid="uid://d4c528k1pwiwv" path="res://logic/battle system/ui/battle_menu_hud.gd" id="1_jy0as"]
+
+[node name="Battle Menu" type="Control" unique_id=818550227 node_paths=PackedStringArray("attack_card", "special_attack_card", "ultimate_attack_card", "defense_card", "special_defense_card", "null_defense_card", "retry_button", "retry_battle_select_button", "retry_main_menu_button", "next_battle_button", "victory_main_menu_button", "victory_battle_select_button", "attack_phase_hud", "defense_phase_hud", "retry_menu", "victory_menu")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jy0as")
+attack_card = NodePath("Attack Phase/Attack")
+special_attack_card = NodePath("Attack Phase/Special Attack")
+ultimate_attack_card = NodePath("Attack Phase/Ultimate")
+defense_card = NodePath("Defend Phase/Defend")
+special_defense_card = NodePath("Defend Phase/Special Defend")
+null_defense_card = NodePath("Defend Phase/Null")
+retry_button = NodePath("Retry Menu/VBoxContainer/Retry Button")
+retry_battle_select_button = NodePath("Retry Menu/VBoxContainer/Battle Select Button")
+retry_main_menu_button = NodePath("Retry Menu/VBoxContainer/Main Menu Button")
+next_battle_button = NodePath("Victory Menu/VBoxContainer/Next Button")
+victory_main_menu_button = NodePath("Victory Menu/VBoxContainer/Main Menu Button")
+victory_battle_select_button = NodePath("Victory Menu/VBoxContainer/Battle Select Button")
+attack_phase_hud = NodePath("Attack Phase")
+defense_phase_hud = NodePath("Defend Phase")
+retry_menu = NodePath("Retry Menu")
+victory_menu = NodePath("Victory Menu")
+
+[node name="Attack Phase" type="HBoxContainer" parent="." unique_id=730349946]
+layout_mode = 0
+offset_left = 347.0
+offset_top = 265.0
+offset_right = 606.0
+offset_bottom = 329.0
+alignment = 1
+
+[node name="Attack" type="Button" parent="Attack Phase" unique_id=2038595331]
+layout_mode = 2
+text = "Attack"
+
+[node name="Special Attack" type="Button" parent="Attack Phase" unique_id=1633930144]
+layout_mode = 2
+text = "Spe. Att."
+
+[node name="Ultimate" type="Button" parent="Attack Phase" unique_id=2113427523]
+layout_mode = 2
+text = "Ultimate"
+
+[node name="Defend Phase" type="HBoxContainer" parent="." unique_id=277157681]
+visible = false
+layout_mode = 0
+offset_left = 304.0
+offset_top = 261.0
+offset_right = 642.0
+offset_bottom = 333.0
+alignment = 1
+
+[node name="Defend" type="Button" parent="Defend Phase" unique_id=880804169]
+layout_mode = 2
+text = "Defend
+"
+
+[node name="Special Defend" type="Button" parent="Defend Phase" unique_id=560573299]
+layout_mode = 2
+text = "Spe. Def."
+
+[node name="Null" type="Button" parent="Defend Phase" unique_id=1541299287]
+layout_mode = 2
+text = "Null"
+
+[node name="AspectRatioContainer2" type="AspectRatioContainer" parent="." unique_id=1213218847]
+layout_mode = 0
+offset_left = 266.0
+offset_top = 9.0
+offset_right = 376.0
+offset_bottom = 119.0
+
+[node name="Label" type="Label" parent="AspectRatioContainer2" unique_id=1772812468]
+layout_mode = 2
+text = "V. Raptor lvl 5
+"
+horizontal_alignment = 1
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="." unique_id=1312561777]
+layout_mode = 0
+offset_top = 175.0
+offset_right = 177.0
+offset_bottom = 285.0
+
+[node name="Label" type="Label" parent="AspectRatioContainer" unique_id=632194656]
+layout_mode = 2
+text = "Steg lvl 6"
+horizontal_alignment = 1
+
+[node name="Retry Menu" type="Control" parent="." unique_id=1388096719]
+visible = false
+anchors_preset = 0
+offset_left = 191.0
+offset_top = 145.0
+offset_right = 231.0
+offset_bottom = 185.0
+
+[node name="PanelContainer" type="PanelContainer" parent="Retry Menu" unique_id=1813764843]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -4.275
+anchor_top = -2.8750002
+anchor_right = 10.725
+anchor_bottom = 4.625
+
+[node name="Label" type="Label" parent="Retry Menu" unique_id=1712850454]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.975
+anchor_top = -2.2250001
+anchor_right = 7.0000005
+anchor_bottom = -0.55
+offset_right = -3.0517578e-05
+text = "You loss! GIT GUD!"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Retry Menu" unique_id=848201061]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.125
+anchor_top = -1.5250001
+anchor_right = 4.8
+anchor_bottom = 0.125
+
+[node name="Retry Button" type="Button" parent="Retry Menu/VBoxContainer" unique_id=1705959143]
+layout_mode = 2
+text = "Retry?"
+
+[node name="Battle Select Button" type="Button" parent="Retry Menu/VBoxContainer" unique_id=2134436579]
+layout_mode = 2
+text = "Battle Select"
+
+[node name="Main Menu Button" type="Button" parent="Retry Menu/VBoxContainer" unique_id=1448968903]
+layout_mode = 2
+text = "Main Menu"
+
+[node name="Victory Menu" type="Control" parent="." unique_id=1818445104]
+visible = false
+anchors_preset = 0
+offset_left = 191.0
+offset_top = 145.0
+offset_right = 231.0
+offset_bottom = 185.0
+
+[node name="PanelContainer" type="PanelContainer" parent="Victory Menu" unique_id=896819432]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -4.275
+anchor_top = -2.8750002
+anchor_right = 10.725
+anchor_bottom = 4.625
+
+[node name="Label" type="Label" parent="Victory Menu" unique_id=327770884]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.975
+anchor_top = -2.2250001
+anchor_right = 7.0000005
+anchor_bottom = -0.55
+offset_right = -3.0517578e-05
+text = "Victory! You got GUD!"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Victory Menu" unique_id=1097348671]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.125
+anchor_top = -1.5250001
+anchor_right = 4.8
+anchor_bottom = 0.125
+
+[node name="Next Button" type="Button" parent="Victory Menu/VBoxContainer" unique_id=1684301101]
+layout_mode = 2
+text = "Next Battle?"
+
+[node name="Battle Select Button" type="Button" parent="Victory Menu/VBoxContainer" unique_id=2016080569]
+layout_mode = 2
+text = "Battle Select"
+
+[node name="Main Menu Button" type="Button" parent="Victory Menu/VBoxContainer" unique_id=619345091]
+layout_mode = 2
+text = "Main Menu"
