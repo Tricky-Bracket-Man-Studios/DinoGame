@@ -23,6 +23,9 @@ var _current_menu_uid : String = ""
 func _ready() -> void:
 	ManagerSignalBus.load_menu.connect(load_menu)
 	ManagerSignalBus.return_to_main_menu.connect(return_to_main_menu)
+	ManagerSignalBus.unload_menu.connect(unload_menu)
+	
+	
 #endregion
 
 #region public methods (non underscore prefixed snake_case):
@@ -34,16 +37,20 @@ func reload_menu() -> void:
 
 func load_menu(menu_object : String) -> void:
 	_perform_load_menu.call_deferred(menu_object)
-#endregion
 	
-#region private methods (undersocre prefixed snake_case):
-func _perform_load_menu(menu_object_uid : String) -> void:
+func unload_menu() -> void:
 	if is_instance_valid(_current_menu):
 		_current_menu.queue_free()
 		_current_menu = null
 		
 		# Wait to allow the queued deletion to process so it is out of the scene tree
 		await get_tree().process_frame
+
+#endregion
+	
+#region private methods (undersocre prefixed snake_case):
+func _perform_load_menu(menu_object_uid : String) -> void:
+	unload_menu()
 	
 	var new_menu_packed : PackedScene = (
 			ResourceLoader.load(menu_object_uid, "PackedScene") as PackedScene

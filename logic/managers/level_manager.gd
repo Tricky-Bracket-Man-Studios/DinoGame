@@ -4,7 +4,7 @@ extends Node
 ## Description: The purpose of this script is to orcastrate levels for the game.
 ## Filename: level_manager.gd
 ## Author(s): Matthew Perry,
-## Last Updated: 09/15/2026
+## Last Updated: 09/21/2026
 
 #region export variables (snake_case):
 @export var level_root : Node2D
@@ -17,21 +17,25 @@ var _current_level : Node2D = null
 #region (optional) build in virtural methods:
 func _ready() -> void:
 	ManagerSignalBus.load_level.connect(load_level)
+	ManagerSignalBus.unload_level.connect(unload_level)
 #endregion
 
 #region public methods (non underscore prefixed snake_case):
 func load_level(level_object : String) -> void:
 	_perform_load_level.call_deferred(level_object)
-#endregion
 	
-#region private methods (undersocre prefixed snake_case):
-func _perform_load_level(level_object_uid : String) -> void:
+func unload_level() -> void:
 	if is_instance_valid(_current_level):
 		_current_level.queue_free()
 		_current_level = null
 		
 		# Wait to allow the queued deletion to process so it is out of the scene tree
 		await get_tree().process_frame
+#endregion
+	
+#region private methods (undersocre prefixed snake_case):
+func _perform_load_level(level_object_uid : String) -> void:
+	unload_level()
 	
 	var new_level_packed : PackedScene = (
 			ResourceLoader.load(level_object_uid, "PackedScene") as PackedScene

@@ -11,7 +11,7 @@ extends IDino
 #region (optional) build in virtural methods:
 func _ready() -> void:
 	ManagerSignalBus.change_players_dino_stance.connect(_change_current_stance)
-	
+	health_system.set_max_health_points(stats.max_health)
 	_attack = stats.attack
 	_special_attack = stats.special_attack
 	_defense = stats.defense

@@ -3,7 +3,7 @@ extends Node
 ## Description: The purpose of this script is to hold all relevant signals for managers
 ## Filename: manager_signal_bus.gd
 ## Author(s): Matthew Perry,
-## Last Updated: 09/15/2026
+## Last Updated: 09/21/2026
 
 #region signals (snake_case):
 
@@ -29,10 +29,25 @@ signal load_units(unit : Array[String], spawn_location : Vector2)
 signal unload_units()
 
 @warning_ignore("unused_signal")
+signal unload_level()
+
+@warning_ignore("unused_signal")
+signal unload_menu()
+
+@warning_ignore("unused_signal")
+signal unload_system()
+
+@warning_ignore("unused_signal")
 signal change_game_state_request()
 
 @warning_ignore("unused_signal")
 signal change_battle_state_request()
+
+@warning_ignore("unused_signal")
+signal change_game_state_battle_select()
+
+@warning_ignore("unused_signal")
+signal change_game_state_battle_menu()
 
 @warning_ignore("unused_signal")
 signal change_players_dino_stance(stance : IDino.DinoBattleStance)
@@ -47,6 +62,9 @@ signal enable_defense_phase_hud_request()
 signal enable_retry_menu()
 
 @warning_ignore("unused_signal")
+signal enable_victory_menu()
+
+@warning_ignore("unused_signal")
 signal disable_attack_phase_hud_request()
 
 @warning_ignore("unused_signal")
@@ -54,6 +72,9 @@ signal disable_defense_phase_hud_request()
 
 @warning_ignore("unused_signal")
 signal disable_retry_menu()
+
+@warning_ignore("unused_signal")
+signal disable_victory_menu()
 
 @warning_ignore("unused_signal")
 signal calculate_battle_request()
@@ -74,6 +95,12 @@ signal get_unit_request(dino_uid : String)
 signal get_player_dino_request()
 
 @warning_ignore("unused_signal")
+signal get_player_dino_HP()
+
+@warning_ignore("unused_signal")
+signal get_enemy_dino_HP()
+
+@warning_ignore("unused_signal")
 signal get_enemy_dino_request()
 
 @warning_ignore("unused_signal")
@@ -87,6 +114,12 @@ signal deliver_player_dino(dino_object : PackedScene)
 
 @warning_ignore("unused_signal")
 signal deliver_enemy_dino(dino_object : PackedScene)
+
+@warning_ignore("unused_signal")
+signal deliver_player_dino_HP(dino_hp : String)
+
+@warning_ignore("unused_signal")
+signal deliver_enemy_dino_HP(dino_hp : String)
 
 @warning_ignore("unused_signal")
 signal trigger_battle_1()

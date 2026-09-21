@@ -8,13 +8,13 @@ extends IBattleState
 
 #region public methods (non underscore prefixed snake_case):
 func enter() -> void:
-	print(name + ": Battle Won!")
+	ManagerSignalBus.enable_victory_menu.emit()
 
 func process(_delta: float) -> void:
 	pass
 
 func exit() -> void:
-	pass
+	ManagerSignalBus.disable_victory_menu.emit()
 
 #endregion
 #region private methods (undersocre prefixed snake_case):
