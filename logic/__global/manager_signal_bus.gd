@@ -38,7 +38,7 @@ signal unload_menu()
 signal unload_system()
 
 @warning_ignore("unused_signal")
-signal change_game_state_request()
+signal change_game_state_request(state: String)
 
 @warning_ignore("unused_signal")
 signal change_battle_state_request()

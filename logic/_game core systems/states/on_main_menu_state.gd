@@ -4,11 +4,10 @@ extends IState
 ## when on the main menu
 ## Filename: on_main_menu_state.gd
 ## Author(s): Matthew Perry,
-## Last Updated: 09/13/2026
+## Last Updated: 09/28/2026
 
 #region constants (CONSTANT_CASE):
 const MAIN_MENU_HUD : String = "uid://cij05tkirhkac"
-const BATTLE_SELECT_STATE : String = "BattleSelect"
 #endregion
 
 #region public methods (non underscore prefixed snake_case):
@@ -24,6 +23,6 @@ func exit() -> void:
 #endregion
 
 #region private variables (undersocre prefixed snake_case):
-func _start_game() -> void:
-	change_state.emit(self, BATTLE_SELECT_STATE)
+func _start_game(state : String) -> void:
+	change_state.emit(self, state)
 #endregion
