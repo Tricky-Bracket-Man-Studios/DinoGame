@@ -3,7 +3,7 @@ extends Node
 ## Description: The purpose of this script is to hold all relevant signals for managers
 ## Filename: manager_signal_bus.gd
 ## Author(s): Matthew Perry,
-## Last Updated: 09/21/2026
+## Last Updated: 10/01/2026
 
 #region signals (snake_case):
 
@@ -38,7 +38,7 @@ signal unload_menu()
 signal unload_system()
 
 @warning_ignore("unused_signal")
-signal change_game_state_request()
+signal change_game_state_request(state: String)
 
 @warning_ignore("unused_signal")
 signal change_battle_state_request()
@@ -63,6 +63,9 @@ signal enable_retry_menu()
 
 @warning_ignore("unused_signal")
 signal enable_victory_menu()
+
+@warning_ignore("unused_signal")
+signal enable_menu_request(menu_name : String)
 
 @warning_ignore("unused_signal")
 signal disable_attack_phase_hud_request()

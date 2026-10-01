@@ -1,44 +1,26 @@
 class_name MainMenuHUDLogic
 extends Control
 ## Description: The purpose of this script is to hold the logic for the main menu.
-## Filename: main_menu_hud.gd
+## Filename: main_menu_hud_logic.gd
 ## Author(s): Matthew Perry,
-## Last Updated: 09/13/2026
-
-#region constants (CONSTANT_CASE):
-const BATTLE_MENU : String = "uid://d0xl27pl6mfr2"
-#endregion
+## Last Updated: 10/01/2026
 
 #region export variables (snake_case):
-@export var start_button 	: Button
-@export var options_button : Button
-@export var quit_button 	: Button
-#endregion
-
-#region private variables (undersocre prefixed snake_case):
-var _buttons_are_valid : bool = true
+@export var buttons_root : Control
 #endregion
 
 #region (optional) build in virtural methods:
 func _ready() -> void:
-	_validate_buttons()
-	
-	if _buttons_are_valid:
-		start_button.pressed.connect(_on_start_button_pressed)
-		# TODO: add options button here.
-		# TODO: add quit button here.
-	else:
+	if not is_instance_valid(buttons_root):
+		push_error(name + ": please assign the buttons root for this menu!")
 		return
+	
+	for button in buttons_root.get_children():
+		if button is IButtonCommand:
+			button.on_button_pressed.connect(_on_button_pressed)
 #endregion
 
 #region private methods (undersocre prefixed snake_case):
-func _on_start_button_pressed() -> void:
-	ManagerSignalBus.change_game_state_request.emit()
-	
-func _validate_buttons() -> void:
-	var buttons : Array = [start_button, options_button, quit_button]
-	for button in buttons:
-		if not is_instance_valid(button):
-			push_error(name + ": a button is not assigned")
-			_buttons_are_valid = false
+func _on_button_pressed(command : IButtonCommand) -> void:
+	command.execute()
 #endregion
