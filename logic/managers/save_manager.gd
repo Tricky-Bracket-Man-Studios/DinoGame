@@ -32,6 +32,7 @@ func _ready() -> void:
 	}
 	
 	_save_data(testSaveData, SAVE_SLOT_0_PATH)
+	@warning_ignore("unused_variable")
 	var save_data : Dictionary = _load_data(SAVE_SLOT_0_PATH)
 
 #endregion
@@ -42,6 +43,7 @@ func _save_data(saveData : Dictionary, saveSlot : String) -> void:
 	var file = FileAccess.open(saveSlot, FileAccess.WRITE)
 	
 	if file:
+		@warning_ignore("unused_variable")
 		var savedfile = file.store_var(saveData)
 		file.close()
 

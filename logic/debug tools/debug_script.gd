@@ -4,7 +4,7 @@ extends Node
 ## systems and UI, quick and dirty.
 ## Filename: debug_script.gd
 ## Author(s): Matthew Perry,
-## Last Updated: 09/15/2026
+## Last Updated: 10/01/2026
 
 #region export variables (snake_case):
 #endregion
@@ -17,6 +17,8 @@ func _ready() -> void:
 	if not OS.is_debug_build():
 		return
 	
+	ManagerSignalBus.enable_menu_request.connect(_on_enable_menu_request)
+	
 func _input(event: InputEvent) -> void:
 	if not OS.is_debug_build():
 		return
@@ -27,4 +29,8 @@ func _input(event: InputEvent) -> void:
 #endregion
 
 #region private methods (undersocre prefixed snake_case):
+
+func _on_enable_menu_request(menu : String) -> void:
+	print(name + ": this is when the " + menu + " menu would be shown...")
+
 #endregion
