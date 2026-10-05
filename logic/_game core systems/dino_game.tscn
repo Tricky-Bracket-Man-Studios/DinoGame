@@ -62,7 +62,7 @@ enemy_logic = NodePath("EnemyLogic")
 
 [node name="PlayerLogic" type="Node" parent="Game Managers/UnitManager" unique_id=1875643837]
 script = ExtResource("9_461m0")
-current_dino = ExtResource("13_x1kh6")
+current_dino_object = ExtResource("13_x1kh6")
 
 [node name="EnemyLogic" type="Node" parent="Game Managers/UnitManager" unique_id=469330930]
 script = ExtResource("11_bku1g")

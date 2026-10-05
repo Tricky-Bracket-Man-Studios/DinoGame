@@ -81,7 +81,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_0m0v8")
 }],
-"loop": 0,
+"loop": 1,
 "name": &"attack",
 "speed": 5.0
 }, {
@@ -103,19 +103,17 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Dino Trike" type="Node2D" unique_id=1520941578 node_paths=PackedStringArray("health_system", "dino_visuals")]
+[node name="Dino Trike" type="Node2D" unique_id=1520941578 node_paths=PackedStringArray("health_system")]
 script = ExtResource("1_78s5t")
 stats = ExtResource("2_3535x")
 health_system = NodePath("Health System")
-dino_visuals = NodePath("Dino Visuals")
 
 [node name="Health System" parent="." unique_id=761511741 instance=ExtResource("1_eon41")]
 
-[node name="Dino Visuals" type="AnimatedSprite2D" parent="." unique_id=1519324905 node_paths=PackedStringArray("dino_logic")]
+[node name="Dino Visuals" type="AnimatedSprite2D" parent="." unique_id=1519324905]
 texture_filter = 1
 scale = Vector2(2.025, 2.025)
 sprite_frames = SubResource("SpriteFrames_suk2g")
 animation = &"idle"
 autoplay = "idle"
 script = ExtResource("5_cpp3x")
-dino_logic = NodePath("..")
