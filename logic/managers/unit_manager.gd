@@ -4,7 +4,7 @@ extends Node
 ## Description: The purpose of this script is to orcastrate units for the game.
 ## Filename: unit_manager.gd
 ## Author(s): Matthew Perry,
-## Last Updated: 09/17/2026
+## Last Updated: 10/04/2026
 
 #region export variables (snake_case):
 @export var unit_root : Node2D
@@ -34,13 +34,9 @@ func load_units(unit_objects : Array[String], units_spawn_position) -> void:
 	_perform_load_unit.call_deferred(unit_objects, units_spawn_position)
 
 func unload_units() -> void:
-	print(name + ": signal detected!")
 	if _current_units_dictionary != {}:
-		print(name + ": dictionary valid!")
 		for unit_id in _current_units_dictionary.keys():
 			var unit_node : Node2D = _current_units_dictionary[unit_id]
-			
-			print(name + ": deleting: " + str(unit_node))
 			unit_node.queue_free()
 			
 		_current_units_dictionary.clear()
@@ -55,14 +51,14 @@ func get_unit(unit_uid : String) -> void:
 		return
 
 func get_player_dino() -> void:
-	ManagerSignalBus.deliver_player_dino.emit(player_logic.current_dino)
+	ManagerSignalBus.deliver_player_dino.emit(player_logic.current_dino_object)
 
 func get_enemy_dino() -> void:
-	ManagerSignalBus.deliver_enemy_dino.emit(enemy_logic.current_dino)
+	ManagerSignalBus.deliver_enemy_dino.emit(enemy_logic.current_dino_object)
 	
 func get_player_dino_HP() -> void:
 	if not _current_units_dictionary.is_empty():
-		var current_dino : IDino = _current_units_dictionary[player_logic.current_dino_uid]
+		var current_dino : DinoLogic = _current_units_dictionary[player_logic.current_dino_object_uid]
 	
 		var new_hp : String = str(current_dino.health_system.get_current_health_points())
 		
@@ -74,7 +70,7 @@ func get_player_dino_HP() -> void:
 	
 func get_enemy_dino_HP() -> void:
 	if not _current_units_dictionary.is_empty():
-		var current_dino : IDino = _current_units_dictionary[enemy_logic.current_dino_uid]
+		var current_dino : DinoLogic = _current_units_dictionary[enemy_logic.current_dino_object_uid]
 	
 		var new_hp : String = str(current_dino.health_system.get_current_health_points())
 		
@@ -85,7 +81,7 @@ func get_enemy_dino_HP() -> void:
 		ManagerSignalBus.deliver_enemy_dino_HP.emit("100")
 
 func set_enemy_dino(dino_object : PackedScene) -> void:
-	enemy_logic.current_dino = dino_object
+	enemy_logic.current_dino_object = dino_object
 	
 
 #endregion

@@ -4,11 +4,11 @@ extends Node
 ## Description: The purpose of this script is to calculate battles
 ## Filename: battle_calculator.gd
 ## Author(s): Matthew Perry,
-## Last Updated: 09/15/2026
+## Last Updated: 10/04/2026
 
 #region private variables (undersocre prefixed snake_case):
-var _players_dino : IDino = null
-var _enemys_dino : IDino = null
+var _players_dino : DinoLogic = null
+var _enemys_dino : DinoLogic = null
 
 var _players_dino_uid : String = ""
 var _enemys_dino_uid : String = ""
@@ -28,15 +28,17 @@ func _ready() -> void:
 func _calculate_battle() -> void:
 	if is_instance_valid(_enemys_dino) && is_instance_valid(_players_dino):
 		match _players_dino._current_stance:
-			IDino.DinoBattleStance.ATTACK:
-				_enemys_dino._current_stance = randi_range(4, 6) as IDino.DinoBattleStance
+			DinoLogic.DinoBattleStance.ATTACK:
+				ManagerSignalBus.change_enemys_dino_stance.emit(
+					randi_range(4, 6) as DinoLogic.DinoBattleStance
+				)
 				
 				match _enemys_dino._current_stance:
-					IDino.DinoBattleStance.DEFEND:
+					DinoLogic.DinoBattleStance.DEFEND:
 						print(
 							_enemys_dino.name 
 							+ ": I chose " 
-							+ IDino.DinoBattleStance.find_key(_enemys_dino._current_stance)
+							+ DinoLogic.DinoBattleStance.find_key(_enemys_dino._current_stance)
 						)
 						
 						var damage : float = _players_dino._attack / 2
@@ -45,11 +47,11 @@ func _calculate_battle() -> void:
 						
 						print(name + ": enemy took " + str(damage) + " damage")
 						
-					IDino.DinoBattleStance.SPECIAL_DEFEND:
+					DinoLogic.DinoBattleStance.SPECIAL_DEFEND:
 						print(
 							_enemys_dino.name 
 							+ ": I chose " 
-							+ IDino.DinoBattleStance.find_key(_enemys_dino._current_stance)
+							+ DinoLogic.DinoBattleStance.find_key(_enemys_dino._current_stance)
 						)
 						
 						var damage : float = _players_dino._attack
@@ -58,11 +60,11 @@ func _calculate_battle() -> void:
 						
 						print(name + ": enemy took " + str(damage) + " damage")
 						
-					IDino.DinoBattleStance.NULL_DEFEND:
+					DinoLogic.DinoBattleStance.NULL_DEFEND:
 						print(
 							_enemys_dino.name 
 							+ ": I chose " 
-							+ IDino.DinoBattleStance.find_key(_enemys_dino._current_stance)
+							+ DinoLogic.DinoBattleStance.find_key(_enemys_dino._current_stance)
 						)
 						
 						var damage : float = _players_dino._attack
@@ -75,16 +77,18 @@ func _calculate_battle() -> void:
 							name + ": error, unknown state entered" + str(_players_dino._current_stance)
 						)
 
-			IDino.DinoBattleStance.SPECIAL_ATTACK:
+			DinoLogic.DinoBattleStance.SPECIAL_ATTACK:
 				print(name + ": special attacked!")
-				_enemys_dino._current_stance = randi_range(4, 6) as IDino.DinoBattleStance
+				ManagerSignalBus.change_enemys_dino_stance.emit(
+					randi_range(4, 6) as DinoLogic.DinoBattleStance
+				)
 				
 				match _enemys_dino._current_stance:
-					IDino.DinoBattleStance.DEFEND:
+					DinoLogic.DinoBattleStance.DEFEND:
 						print(
 							_enemys_dino.name 
 							+ ": I chose " 
-							+ IDino.DinoBattleStance.find_key(_enemys_dino._current_stance)
+							+ DinoLogic.DinoBattleStance.find_key(_enemys_dino._current_stance)
 						)
 						
 						var damage : float = _players_dino._attack * 2
@@ -93,11 +97,11 @@ func _calculate_battle() -> void:
 						
 						print(name + ": enemy took " + str(damage) + " damage")
 						
-					IDino.DinoBattleStance.SPECIAL_DEFEND:
+					DinoLogic.DinoBattleStance.SPECIAL_DEFEND:
 						print(
 							_enemys_dino.name 
 							+ ": I chose " 
-							+ IDino.DinoBattleStance.find_key(_enemys_dino._current_stance)
+							+ DinoLogic.DinoBattleStance.find_key(_enemys_dino._current_stance)
 						)
 						
 						var damage : float = _enemys_dino._attack * 2
@@ -106,11 +110,11 @@ func _calculate_battle() -> void:
 						
 						print(name + ": enemy took " + str(damage) + " damage")
 						
-					IDino.DinoBattleStance.NULL_DEFEND:
+					DinoLogic.DinoBattleStance.NULL_DEFEND:
 						print(
 							_enemys_dino.name 
 							+ ": I chose " 
-							+ IDino.DinoBattleStance.find_key(_enemys_dino._current_stance)
+							+ DinoLogic.DinoBattleStance.find_key(_enemys_dino._current_stance)
 						)
 						
 						var damage : float = _players_dino._attack * 2
@@ -122,16 +126,19 @@ func _calculate_battle() -> void:
 						push_error(
 							name + ": error, unknown state entered" + str(_players_dino._current_stance)
 						)
-			IDino.DinoBattleStance.ULTIMATE_ATTACK:
+			
+			DinoLogic.DinoBattleStance.ULTIMATE_ATTACK:
 				print(name + ": ultimate attacked!")
-				_enemys_dino._current_stance = randi_range(4, 6) as IDino.DinoBattleStance
+				ManagerSignalBus.change_enemys_dino_stance.emit(
+					randi_range(4, 6) as DinoLogic.DinoBattleStance
+				)
 				
 				match _enemys_dino._current_stance:
-					IDino.DinoBattleStance.DEFEND:
+					DinoLogic.DinoBattleStance.DEFEND:
 						print(
 							_enemys_dino.name 
 							+ ": I chose " 
-							+ IDino.DinoBattleStance.find_key(_enemys_dino._current_stance)
+							+ DinoLogic.DinoBattleStance.find_key(_enemys_dino._current_stance)
 						)
 						_players_dino._attack += (_players_dino._attack * 0.2)
 						_players_dino._special_attack += (_players_dino._special_attack * 0.2)
@@ -143,11 +150,11 @@ func _calculate_battle() -> void:
 							+ str(_players_dino._special_attack)
 						)
 						
-					IDino.DinoBattleStance.SPECIAL_DEFEND:
+					DinoLogic.DinoBattleStance.SPECIAL_DEFEND:
 						print(
 							_enemys_dino.name 
 							+ ": I chose " 
-							+ IDino.DinoBattleStance.find_key(_enemys_dino._current_stance)
+							+ DinoLogic.DinoBattleStance.find_key(_enemys_dino._current_stance)
 						)
 						
 						_players_dino._attack += (_players_dino._attack * 0.2)
@@ -160,11 +167,11 @@ func _calculate_battle() -> void:
 							+ str(_players_dino._special_attack)
 						)
 						
-					IDino.DinoBattleStance.NULL_DEFEND:
+					DinoLogic.DinoBattleStance.NULL_DEFEND:
 						print(
 							_enemys_dino.name 
 							+ ": I chose " 
-							+ IDino.DinoBattleStance.find_key(_enemys_dino._current_stance)
+							+ DinoLogic.DinoBattleStance.find_key(_enemys_dino._current_stance)
 						)
 						
 						var damage : float = _enemys_dino._attack
@@ -184,15 +191,18 @@ func _calculate_battle() -> void:
 						push_error(
 							name + ": error, unknown state entered" + str(_players_dino._current_stance)
 						)
-			IDino.DinoBattleStance.DEFEND:
-				_enemys_dino._current_stance = randi_range(1, 3) as IDino.DinoBattleStance
+			
+			DinoLogic.DinoBattleStance.DEFEND:
+				ManagerSignalBus.change_enemys_dino_stance.emit(
+					randi_range(1, 3) as DinoLogic.DinoBattleStance
+				)
 				
 				match _enemys_dino._current_stance:
-					IDino.DinoBattleStance.ATTACK:
+					DinoLogic.DinoBattleStance.ATTACK:
 						print(
 							_enemys_dino.name 
 							+ ": I chose " 
-							+ IDino.DinoBattleStance.find_key(_enemys_dino._current_stance)
+							+ DinoLogic.DinoBattleStance.find_key(_enemys_dino._current_stance)
 						)
 						
 						var damage : float = _enemys_dino._attack / 2
@@ -201,11 +211,11 @@ func _calculate_battle() -> void:
 						
 						print(name + ": player took " + str(damage) + " damage")
 
-					IDino.DinoBattleStance.SPECIAL_ATTACK:
+					DinoLogic.DinoBattleStance.SPECIAL_ATTACK:
 						print(
 							_enemys_dino.name 
 							+ ": I chose " 
-							+ IDino.DinoBattleStance.find_key(_enemys_dino._current_stance)
+							+ DinoLogic.DinoBattleStance.find_key(_enemys_dino._current_stance)
 						)
 						
 						var damage : float = _enemys_dino._attack * 2
@@ -214,11 +224,11 @@ func _calculate_battle() -> void:
 						
 						print(name + ": player took " + str(damage) + " damage")
 
-					IDino.DinoBattleStance.ULTIMATE_ATTACK:
+					DinoLogic.DinoBattleStance.ULTIMATE_ATTACK:
 						print(
 							_enemys_dino.name 
 							+ ": I chose " 
-							+ IDino.DinoBattleStance.find_key(_enemys_dino._current_stance)
+							+ DinoLogic.DinoBattleStance.find_key(_enemys_dino._current_stance)
 						)
 						
 						_enemys_dino._attack += (_enemys_dino._attack * 0.1)
@@ -236,16 +246,18 @@ func _calculate_battle() -> void:
 							name + ": error, unknown state entered" + str(_players_dino._current_stance)
 						)
 
-			IDino.DinoBattleStance.SPECIAL_DEFEND:
+			DinoLogic.DinoBattleStance.SPECIAL_DEFEND:
 				print(name + ": special defended!")
-				_enemys_dino._current_stance = randi_range(1, 3) as IDino.DinoBattleStance
+				ManagerSignalBus.change_enemys_dino_stance.emit(
+					randi_range(1, 3) as DinoLogic.DinoBattleStance
+				)
 				
 				match _enemys_dino._current_stance:
-					IDino.DinoBattleStance.ATTACK:
+					DinoLogic.DinoBattleStance.ATTACK:
 						print(
 							_enemys_dino.name 
 							+ ": I chose " 
-							+ IDino.DinoBattleStance.find_key(_enemys_dino._current_stance)
+							+ DinoLogic.DinoBattleStance.find_key(_enemys_dino._current_stance)
 						)
 						
 						var damage : float = _enemys_dino._attack 
@@ -254,11 +266,11 @@ func _calculate_battle() -> void:
 						
 						print(name + ": player took " + str(damage) + " damage")
 
-					IDino.DinoBattleStance.SPECIAL_ATTACK:
+					DinoLogic.DinoBattleStance.SPECIAL_ATTACK:
 						print(
 							_enemys_dino.name 
 							+ ": I chose " 
-							+ IDino.DinoBattleStance.find_key(_enemys_dino._current_stance)
+							+ DinoLogic.DinoBattleStance.find_key(_enemys_dino._current_stance)
 						)
 						
 						var damage : float = _players_dino._attack * 2
@@ -267,11 +279,11 @@ func _calculate_battle() -> void:
 						
 						print(name + ": enemy took " + str(damage) + " damage")
 
-					IDino.DinoBattleStance.ULTIMATE_ATTACK:
+					DinoLogic.DinoBattleStance.ULTIMATE_ATTACK:
 						print(
 							_enemys_dino.name 
 							+ ": I chose " 
-							+ IDino.DinoBattleStance.find_key(_enemys_dino._current_stance)
+							+ DinoLogic.DinoBattleStance.find_key(_enemys_dino._current_stance)
 						)
 						
 						_enemys_dino._attack += (_enemys_dino._attack * 0.1)
@@ -288,16 +300,18 @@ func _calculate_battle() -> void:
 						push_error(
 							name + ": error, unknown state entered" + str(_players_dino._current_stance)
 						)
-			IDino.DinoBattleStance.NULL_DEFEND:
+			DinoLogic.DinoBattleStance.NULL_DEFEND:
 				print(name + ": null defended!")
-				_enemys_dino._current_stance = randi_range(1, 3) as IDino.DinoBattleStance
+				ManagerSignalBus.change_enemys_dino_stance.emit(
+					randi_range(1, 3) as DinoLogic.DinoBattleStance
+				)
 				
 				match _enemys_dino._current_stance:
-					IDino.DinoBattleStance.ATTACK:
+					DinoLogic.DinoBattleStance.ATTACK:
 						print(
 							_enemys_dino.name 
 							+ ": I chose " 
-							+ IDino.DinoBattleStance.find_key(_enemys_dino._current_stance)
+							+ DinoLogic.DinoBattleStance.find_key(_enemys_dino._current_stance)
 						)
 						
 						var damage : float = _enemys_dino._attack 
@@ -306,11 +320,11 @@ func _calculate_battle() -> void:
 						
 						print(name + ": player took " + str(damage) + " damage")
 
-					IDino.DinoBattleStance.SPECIAL_ATTACK:
+					DinoLogic.DinoBattleStance.SPECIAL_ATTACK:
 						print(
 							_enemys_dino.name 
 							+ ": I chose " 
-							+ IDino.DinoBattleStance.find_key(_enemys_dino._current_stance)
+							+ DinoLogic.DinoBattleStance.find_key(_enemys_dino._current_stance)
 						)
 						
 						var damage : float = _enemys_dino._attack * 2
@@ -319,11 +333,11 @@ func _calculate_battle() -> void:
 						
 						print(name + ": enemy took " + str(damage) + " damage")
 
-					IDino.DinoBattleStance.ULTIMATE_ATTACK:
+					DinoLogic.DinoBattleStance.ULTIMATE_ATTACK:
 						print(
 							_enemys_dino.name 
 							+ ": I chose " 
-							+ IDino.DinoBattleStance.find_key(_enemys_dino._current_stance)
+							+ DinoLogic.DinoBattleStance.find_key(_enemys_dino._current_stance)
 						)
 						
 						var damage : float = _players_dino._attack
@@ -347,7 +361,7 @@ func _calculate_battle() -> void:
 				push_error(
 					name + ": error, unknown state entered" + str(_players_dino._current_stance)
 				)
-				
+		
 		ManagerSignalBus.calculated_battle_request.emit()
 
 func _capture_player_dino(players_dino_uid : String) -> void:

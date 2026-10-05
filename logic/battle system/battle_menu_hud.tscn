@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://bhpmunnatpoaf"]
+[gd_scene format=3 uid="uid://dsionbcj1o26p"]
 
-[ext_resource type="Script" uid="uid://d4c528k1pwiwv" path="res://logic/battle system/ui/battle_menu_hud.gd" id="1_jy0as"]
+[ext_resource type="Script" uid="uid://d4c528k1pwiwv" path="res://logic/battle system/ui/battle_menu_hud.gd" id="1_16xvf"]
 
 [node name="Battle Menu" type="Control" unique_id=818550227 node_paths=PackedStringArray("attack_card", "special_attack_card", "ultimate_attack_card", "defense_card", "special_defense_card", "null_defense_card", "retry_button", "retry_battle_select_button", "retry_main_menu_button", "next_battle_button", "victory_main_menu_button", "victory_battle_select_button", "attack_phase_hud", "defense_phase_hud", "retry_menu", "victory_menu")]
 layout_mode = 3
@@ -9,7 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_jy0as")
+script = ExtResource("1_16xvf")
 attack_card = NodePath("Attack Phase/Attack")
 special_attack_card = NodePath("Attack Phase/Special Attack")
 ultimate_attack_card = NodePath("Attack Phase/Ultimate")
