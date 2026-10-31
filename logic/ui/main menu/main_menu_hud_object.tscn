@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://degg1dkutyxq5" path="res://logic/ui/main menu/main_menu_hud_logic.gd" id="1_857hp"]
 [ext_resource type="Texture2D" uid="uid://c5jkpds1fsutc" path="res://assets/sprites/dino menu.png" id="2_c6ag3"]
-[ext_resource type="Script" uid="uid://cbnlrb04s46bo" path="res://logic/ui/main menu/commands/start_button_command.gd" id="3_gy4xh"]
 [ext_resource type="Script" uid="uid://c00f76ntsg18h" path="res://logic/ui/main menu/commands/options_button_command.gd" id="4_dte5d"]
 [ext_resource type="Script" uid="uid://cvjbxdsef2b2t" path="res://logic/ui/main menu/commands/quit_button_command.gd" id="4_idpia"]
 
@@ -14,7 +13,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_857hp")
-buttons_root = NodePath("VBoxContainer/ButtonsRoot")
+buttons_root = NodePath("ButtonsRoot")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1683585739]
 texture_filter = 1
@@ -22,49 +21,49 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -5.0
-offset_right = 5.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_c6ag3")
 expand_mode = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1765939093]
+[node name="ButtonsRoot" type="VBoxContainer" parent="." unique_id=1765939093]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 273.0
-offset_top = 103.0
-offset_right = -286.38013
-offset_bottom = -156.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.5
+offset_top = -103.0
+offset_right = 46.5
+offset_bottom = 103.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="ButtonsRoot" type="Control" parent="VBoxContainer" unique_id=1723338616]
+[node name="NewGameButton" type="Button" parent="ButtonsRoot" unique_id=66803998]
 layout_mode = 2
+text = "New Game"
 
-[node name="StartButton" type="Button" parent="VBoxContainer/ButtonsRoot" unique_id=66803998]
-layout_mode = 0
-offset_top = -105.0
-offset_right = 80.0
-offset_bottom = -74.0
-text = "Start"
-script = ExtResource("3_gy4xh")
+[node name="ContinueButton" type="Button" parent="ButtonsRoot" unique_id=1433596548]
+layout_mode = 2
+text = "Continue
+"
 
-[node name="OptionsButton" type="Button" parent="VBoxContainer/ButtonsRoot" unique_id=1852182193]
-layout_mode = 0
-offset_top = -70.0
-offset_right = 80.0
-offset_bottom = -39.0
+[node name="LoadGameButton" type="Button" parent="ButtonsRoot" unique_id=2112741429]
+layout_mode = 2
+text = "Load"
+
+[node name="OptionsButton" type="Button" parent="ButtonsRoot" unique_id=1852182193]
+layout_mode = 2
 text = "Options"
 script = ExtResource("4_dte5d")
 
-[node name="QuitButton" type="Button" parent="VBoxContainer/ButtonsRoot" unique_id=1792838943]
-layout_mode = 0
-offset_top = -35.0
-offset_right = 80.0
-offset_bottom = -4.0
+[node name="CreditsButton" type="Button" parent="ButtonsRoot" unique_id=1415480476]
+layout_mode = 2
+text = "Credits"
+
+[node name="QuitButton" type="Button" parent="ButtonsRoot" unique_id=1792838943]
+layout_mode = 2
 text = "Quit"
 script = ExtResource("4_idpia")
