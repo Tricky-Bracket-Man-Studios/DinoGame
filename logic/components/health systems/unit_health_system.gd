@@ -1,10 +1,11 @@
+class_name UnitHealthSystem
 extends IHealthSystem
 
 ## Description: The purpose of this script is to hold the logic for A units Health System. all things 
 ## related to damage and health points should be handled by this script.
 ## Filename: unit_health_system.gd
 ## Author(s): Matthew Perry,
-## Last Updated: 09/21/2026
+## Last Updated: 10/04/2026
 
 #region private variables (undersocre prefixed snake_case):
 var _max_health_points : float = 100

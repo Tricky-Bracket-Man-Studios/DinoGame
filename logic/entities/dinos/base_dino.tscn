@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://baqfqynd0wchc" path="res://logic/components/health systems/health_system.tscn" id="1_d243x"]
 [ext_resource type="Script" uid="uid://d2npev1a84fn7" path="res://logic/entities/dinos/dino_logic.gd" id="1_l71d0"]
-[ext_resource type="Texture2D" uid="uid://borymykqeg4yv" path="res://assets/debug/debug_tyran.png" id="2_l71d0"]
 [ext_resource type="Texture2D" uid="uid://bjjk06hj7bclf" path="res://assets/sprites/dino jam 6 sprite sheet 3 enemies.png" id="4_4fobo"]
+[ext_resource type="Script" uid="uid://b3p3gebnyf66y" path="res://logic/entities/dinos/dino_visuals.gd" id="4_iko3f"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_iko3f"]
 atlas = ExtResource("4_4fobo")
@@ -46,18 +46,16 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="BaseDino" type="Node2D" unique_id=1061601758 node_paths=PackedStringArray("health_system", "sprite")]
+[node name="BaseDino" type="Node2D" unique_id=1061601758 node_paths=PackedStringArray("health_system", "dino_visuals")]
 script = ExtResource("1_l71d0")
 health_system = NodePath("Health System")
-sprite = NodePath("Sprite2D")
+dino_visuals = NodePath("Dino Visuals")
 
 [node name="Health System" parent="." unique_id=761511741 instance=ExtResource("1_d243x")]
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1710639524]
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("2_l71d0")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1418412907]
+[node name="Dino Visuals" type="AnimatedSprite2D" parent="." unique_id=1418412907 node_paths=PackedStringArray("dino_logic")]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_suk2g")
 animation = &"attack"
+script = ExtResource("4_iko3f")
+dino_logic = NodePath("..")

@@ -3,7 +3,7 @@ extends Node
 ## Description: The purpose of this script is to hold all relevant signals for managers
 ## Filename: manager_signal_bus.gd
 ## Author(s): Matthew Perry,
-## Last Updated: 10/01/2026
+## Last Updated: 10/04/2026
 
 #region signals (snake_case):
 
@@ -50,7 +50,10 @@ signal change_game_state_battle_select()
 signal change_game_state_battle_menu()
 
 @warning_ignore("unused_signal")
-signal change_players_dino_stance(stance : IDino.DinoBattleStance)
+signal change_players_dino_stance(stance : DinoLogic.DinoBattleStance)
+
+@warning_ignore("unused_signal")
+signal change_enemys_dino_stance(stance : DinoLogic.DinoBattleStance)
 
 @warning_ignore("unused_signal")
 signal enable_attack_phase_hud_request()
@@ -132,4 +135,15 @@ signal trigger_battle_loss_phase()
 
 @warning_ignore("unused_signal")
 signal trigger_battle_won_phase()
+
+@warning_ignore("unused_signal")
+signal players_stance_changed(stance : DinoLogic.DinoBattleStance)
+
+@warning_ignore("unused_signal")
+signal players_animations_finished()
+
+@warning_ignore("unused_signal")
+signal enemys_animations_finished()
+
+
 #endregion
